@@ -1,0 +1,105 @@
+
+.blog-title {
+    opacity: 0;
+    color: #ff46e3;
+    animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+nav{
+    background-color: #48018e;
+    padding: 8px;
+    margin-bottom:0;
+    animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+/*tools for a (nav buttons)*/
+.toola {
+    color: #e4c1f9;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.7s ease, color 0.7s ease;
+}
+.toola:hover {
+    background-color: rgb(48, 0, 90);
+    color: #fa99f4;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color:#251d21;
+}
+
+.arttool {
+    animation: fadeIn 0.7s ease-in-out forwards;
+    margin-bottom: 5%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 3%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+    background-color: #3c0070; 
+    padding: 10px;
+}
+
+.image {
+    flex-shrink: 0;
+    max-width: 50%;
+    max-height: 90%;
+    margin-right: 0;
+    padding: 0;
+}
+
+.text {
+    flex-grow: 1;
+    font-size: 20px;
+    border: 4px solid #48018e; 
+    color: #fa99f4;
+    margin-left: 0px;
+    padding: 10px;
+}
+
+.table {
+    font-size: 18px;
+    border: 2px solid #fa578a;
+    background-color: #463940;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+.tabletitle{
+    color: #ffa6bb;
+}
+
+.coltitle{
+    color: #fa578a;
+}
+
+.tablecontent{
+    color: #ffa6bb;
+}
+
+footer {
+    background-color: #f77795;
+    color: white;
+    padding: 10px;
+    animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
