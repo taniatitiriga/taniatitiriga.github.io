@@ -31,7 +31,7 @@ nav{
 /*----------------------SIDE BAR----------------------*/
 
 aside {
-    position: sticky;
+    position: relative;
     float: left;
     width: 25%;
     background-color: #3c0070;
