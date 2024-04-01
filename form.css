@@ -4,6 +4,9 @@
     animation: fadeIn 0.7s ease-in-out forwards;
 }
 
+
+/*----------------------NAV BAR----------------------*/
+
 nav{
     background-color: #48018e;
     padding: 8px;
@@ -23,6 +26,9 @@ nav{
     color: #fa99f4;
 }
 
+
+/*----------------------CONTENT----------------------*/
+
 body {
     font-family: 'Courier New', monospace;
     background-color:rgb(36, 33, 34);
@@ -41,6 +47,10 @@ body {
 .formtool {
     animation: fadeIn 0.7s ease-in-out forwards;
 }
+
+
+/*----------------------FOOTER----------------------*/
+
 footer {
     background-color: #f77795;
     color: white;
@@ -48,6 +58,9 @@ footer {
     margin-top:2%;
     animation: fadeIn 0.7s ease-in-out forwards;
 }
+
+
+/*----------------------ANIMATIONS----------------------*/
 
 @keyframes fadeIn {
     from {

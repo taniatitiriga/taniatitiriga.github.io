@@ -5,6 +5,9 @@
     animation: fadeIn 0.7s ease-in-out forwards;
 }
 
+
+/*----------------------NAV BAR----------------------*/
+
 nav{
     background-color:#48018e ;
     padding: 8px;
@@ -23,6 +26,9 @@ nav{
     background-color: rgb(48, 0, 90);
     color: #fa99f4;
 }
+
+
+/*----------------------SIDE BAR----------------------*/
 
 aside {
     position: sticky;
@@ -45,6 +51,7 @@ aside {
     border-radius: 4px;
     transition: background-color 0.7s ease, color 0.7s ease;
 }
+
 .btn:hover {
     display: inline-block;
     padding: 8px 16px;
@@ -54,7 +61,9 @@ aside {
     border-radius: 4px;
 }
 
-/*other links (not nav)*/
+
+/*----------------------LINKS----------------------*/
+
 .othera:link {
     color: #805dfe;
     background-color: transparent;
@@ -76,6 +85,8 @@ aside {
     text-decoration: underline;
 }
 
+
+/*----------------------POSTS----------------------*/
 
 body {
     font-family: 'Courier New', monospace;
@@ -107,6 +118,9 @@ body {
     height: 15%;
 }
 
+
+/*----------------------FOOTER----------------------*/
+
 footer {
     background-color: #f77795;
     color: white;
@@ -114,6 +128,9 @@ footer {
     clear: both; 
     animation: fadeIn 0.7s ease-in-out forwards;
 }
+
+
+/*----------------------ANIMATIONS----------------------*/
 
 @keyframes fadeIn {
     from {

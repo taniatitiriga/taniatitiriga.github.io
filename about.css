@@ -5,6 +5,9 @@
     animation: fadeIn 0.7s ease-in-out forwards;
 }
 
+
+/*----------------------NAV BAR----------------------*/
+
 nav{
     background-color: #48018e;
     padding: 8px;
@@ -24,11 +27,9 @@ nav{
     color: #fa99f4;
 }
 
-body {
-    font-family: 'Courier New', monospace;
-    background-color:#251d21;
-}
-/*other links (not nav)*/
+
+
+/*----------------------LINKS----------------------*/
 .othera:link {
     color: #805dfe;
     background-color: transparent;
@@ -48,6 +49,14 @@ body {
     color: #a391e3;
     background-color: transparent;
     text-decoration: underline;
+}
+
+
+/*----------------------POSTS----------------------*/
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color:#251d21;
 }
 
 .arttool {
@@ -84,6 +93,9 @@ body {
     padding: 10px;
 }
 
+
+/*----------------------TABLE----------------------*/
+
 .table {
     font-size: 18px;
     border: 2px solid #fa578a;
@@ -107,12 +119,18 @@ body {
     color: #ffa6bb;
 }
 
+
+/*----------------------FOOTER----------------------*/
+
 footer {
     background-color: #f77795;
     color: white;
     padding: 10px;
     animation: fadeIn 0.7s ease-in-out forwards;
 }
+
+
+/*----------------------ANIMATIONS----------------------*/
 
 @keyframes fadeIn {
     from {
