@@ -36,6 +36,29 @@ aside {
     animation: fadeIn 0.7s ease-in-out forwards;
 }
 
+
+a:link {
+    color: #805dfe;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: #8a44e0;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #a391e3;
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:active {
+    color: #a391e3;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+
 body {
     font-family: 'Courier New', monospace;
     background-color:#221b23;
