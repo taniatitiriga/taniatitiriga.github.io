@@ -45,22 +45,23 @@ aside {
     border-radius: 4px;
 }
 
-a:link {
+/*other links (not nav)*/
+.othera:link {
     color: #805dfe;
     background-color: transparent;
     text-decoration: none;
 }
-a:visited {
+.othera:visited {
     color: #8a44e0;
     background-color: transparent;
     text-decoration: none;
 }
-a:hover {
+.othera:hover {
     color: #a391e3;
     background-color: transparent;
     text-decoration: underline;
 }
-a:active {
+.othera:active {
     color: #a391e3;
     background-color: transparent;
     text-decoration: underline;
