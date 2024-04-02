@@ -43,22 +43,18 @@ aside {
 }
 
 .btn {
-    display: inline-block;
-    padding: 8px 16px;
+    display: grid;
+    padding: 4px 8px;
+    text-align: center;
     background-color: #48018e;
     color: #e4c1f9;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.7s ease, color 0.7s ease;
+    transition: background-color 1s ease, color 0.7s ease;
 }
 
 .btn:hover {
-    display: inline-block;
-    padding: 8px 16px;
     background-color: rgb(48, 0, 90);
     color: #fa99f4;
-    text-decoration: none;
-    border-radius: 4px;
 }
 
 
@@ -106,11 +102,16 @@ body {
     display: block;
     color:  #fa99f4 ;
     background-color:#2e262e;
-    padding: 8px;
+    padding: 15px;
     margin-left: 26%;
     margin-top: 5px;
     margin-bottom: 10px;
     animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+.postdetails{
+    text-align: right;
+    font-size: 14px;
 }
 
 .postimage{
