@@ -37,9 +37,9 @@ body {
 
 /*article tool*/
 .arttool {
-    color:  #fa99f4 ;
+    color:  #e4c1f9 ;
     background-color:#2e262e;
-    padding: 8px;
+    padding: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
     animation: fadeIn 0.7s ease-in-out forwards;
@@ -50,10 +50,38 @@ body {
 }
 
 
+/*----------------------TABLE----------------------*/
+
+table, td, th {
+    font-size: 18px;
+    border: 1px solid #ef5fff;
+    border-collapse: collapse;
+    background-color: #332c36;
+    color: #e4c1f9;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+
+/*----------------------CODE SNIPPET----------------------*/
+
+code {
+    display: block;
+    background-color: #332c36;
+    color: #ef5fff;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+
 /*----------------------FOOTER----------------------*/
 
 footer {
-    background-color: #f77795;
+    background-color: #ff01ea;
     color: white;
     padding: 10px;
     clear: both; 

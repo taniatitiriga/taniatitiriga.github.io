@@ -19,8 +19,248 @@
 
     <section>
         <article class="arttool">
-            insert writeup here
+            <p><strong>Title:</strong> HashBreaker | <strong>Category:</strong> Crypto |  <strong>Difficulty:</strong> medium | 275 points | 3 solves |</p>
+            <h3>Introduction</h3>
+            <p>We are provided by the challenge 2 things:</p>
+            <ul>
+                <li>a hash: "1a061d36422e5a08190009ddfd34d74d603f2f7c384a08b3521c08130d171dcf",</li>
+                <li>and the function used to obtain it:</li>
+            </ul>
+            
+            <pre><code>def ultrabrend(message):
+    if len(message) &lt; 29:
+        message = ((message + " ") * 29)[:29]
+
+    digest = [0]*32
+
+    for i in range(len(message)):
+        digest[i % 29] ^= ord(message[i])
+
+    t = digest[0] * digest[28]
+
+    for i in range(28):
+        digest[i] = (digest[i] + digest[i+1]) % 256
+
+    digest[28] = t // 256
+    digest[29] = t % 256
+    digest[30] = 0xff ^ len(message)
+    digest = digest[16:] + digest[:16]
+
+    for i in range(32):
+        digest[i] ^= digest[(i+1) % 32] ^ i
+
+    return "".join(["{:02x}".format(i) for i in digest])
+
+
+string = input("Enter a message: ")
+print("Hash:", ultrabrend(string))
+            </code></pre>
+            <p>Our goal is to obtain the initial message by reversing the hashing function.</p>
+
+            <h3>First things first, the ending</h3>
+            <p>This is the last operation made on digest[ ], the list returned as hex:</p>
+            <pre><code>for i in range(32):
+    digest[i] ^= digest[(i+1) % 32] ^ i
+            </code></pre>
+            <p>For the theoretical part, let <em>final[ ]</em> be the list we've got, and <em>initial[ ]</em> be the list before being processed by this step.</p>
+            <p>Now, to break it down:</p>
+            <ul>
+                <li>final[0] = initial[0] ⊕ initial[1] ⊕ 0,</li>
+                <li>final[1] = initial[1] ⊕ initial[2] ⊕ 1,</li>
+                <li>...</li>
+                <li>final[30] = initial[30] ⊕ initial[31] ⊕ 30</li>
+            </ul>
+            <p>and for 31, <code>(i+1) % 32</code> will take us back to index 0, which has been modified already:</p>
+            <p>final[31] = initial[31] ⊕ final[0] ⊕ 31.</p>
+            <p>From here, initial[31] becomes known,</p>
+            <p>initial[31] = final[31] ⊕ final[0] ⊕ 31</p>
+            <p>and can be used to find the entire initial list:</p>
+            <ul>
+                <li>initial[30] = initial[31] ⊕ final[30] ⊕ 30,</li>
+                <li>...</li>
+                <li>initial[0] = initial[1] ⊕ final[0] ⊕ 31.</li>
+            </ul>
+            <p>Now that we understand what it does, we can reverse it:</p>
+            <pre><code>digest[31] = digest[31] ^ digest[0] ^ 31
+
+for i in range(30, -1, -1):
+    digest[i] = digest[i] ^ digest[i + 1] ^ i
+            </code></pre>
+
+
+            <h3>Accessories</h3>
+
+            <p>The next line (bottom-up) performs something like cutting the deck in cards and can easely be undone by repeating the process.</p>
+            <pre><code>digest = digest[16:] + digest[:16]
+            </code></pre>
+            <p>The "accessories" we receive next are the length of the message and t (because t = q ⋅ 256 + r, where q = t//  256 and r = t % 256).</p>
+            <pre><code>digest[28] = t // 256
+digest[29] = t % 256
+digest[30] = 0xff ^ len(message)
+            </code></pre>
+            <p>To find the length, xor again: <code>len = digest[30] ^ 255</code>.</p>
+            <p>Our new knowns are t, length and final (the new final, the current one, before being processed at the step presented above). Remember <em>length</em>, it will come in handy later ;).</p>
+
+
+            <h3>A little more math</h3>
+
+            <pre><code>for i in range(28):
+    digest[i] = (digest[i] + digest[i+1]) % 256
+            </code></pre>
+            <p>This (+accessories) modifies the digest:</p>
+            <div style="overflow-x:auto;">
+            <table>
+            <thead>
+                <tr>
+                    <th>list</th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>...</th>
+                    <th>27</th>
+                    <th>28</th>
+                    <th>29</th>
+                    <th>30</th>
+                    <th>31</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>final</strong></td>
+                    <td><em>x<sub>0</sub>+x<sub>1</sub></em></td>
+                    <td><em>x<sub>1</sub>+x<sub>2</sub></em></td>
+                    <td></td>
+                    <td><em>x<sub>27</sub>+x<sub>28</sub></em></td>
+                    <td>t // 256</td>
+                    <td>t % 256</td>
+                    <td>length</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><strong>initial</strong></td>   
+                    <td><em>x<sub>0</sub></em></td>
+                    <td><em>x<sub>1</sub></em></td>
+                    <td></td>
+                    <td><em>x<sub>27</sub></em></td>
+                    <td><em>x<sub>28</sub></em></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+            </table>
+            </div>
+            <p>Now we can reconstruct t as <code>final[28] * 256 + final[29]</code>. This variable was initialized before this for, using the <em>initial digest</em>:</p>
+            <p><code>t = digest[0] * digest[28]</code>,</p>
+            <p>so we know that t = <em>x<sub>0</sub></em> ⋅ <em>x<sub>28</sub></em>.</p>
+            <p>To find a second equation using <em>x<sub>0</sub></em> and <em>x<sub>28</sub></em>, we use final[ ]:</p>
+            <p>final[27] = <em>x<sub>27</sub>+x<sub>28</sub></em><br>
+            final[26] = <em>x<sub>26</sub>+x<sub>27</sub></em><br>
+            <i>subtraction</i><br>
+            final[27] -  final[26] = <em>x<sub>28</sub> - x<sub>26</sub></em></p>
+            <p>final[27] -  final[26] = <em>x<sub>28</sub> - x<sub>26</sub></em><br>
+            final[25] = <em>x<sub>25</sub>+x<sub>26</sub></em><br>
+            <i>addition</i><br>
+            final[27] -  final[26] + final[25] = <em>x<sub>28</sub> + x<sub>25</sub></em></p>
+            final[27] -  final[26] + final[25] = <em>x<sub>28</sub> + x<sub>25</sub></em></p>
+            final[27] -  final[26] + final[25] = <em>x<sub>28</sub> + x<sub>25</sub></em></p>
+            <p>...</p>
+            final[27] -  final[26] + final[25] = <em>x<sub>28</sub> + x<sub>25</sub></em></p>
+            <p>By subtracting and adding repeatedly, we should obtain  <em>x<sub>28</sub> - x<sub>0</sub> = (result)</em>, therefore <em>x<sub>28</sub></em> with regards to <em>x<sub>0</sub></em>:</p>
+            final[27] -  final[26] + final[25] = <em>x<sub>28</sub> + x<sub>25</sub></em></p>
+            <p><em>x<sub>28</sub></em> = (result) + <em>x<sub>0</sub></em>,<br>
+            final[27] -  final[26] + final[25] = <em>x<sub>28</sub> + x<sub>25</sub></em></p>
+            replace <em>x<sub>28</sub></em> in our first equation,</p>
+            final[27] -  final[26] + final[25] = <em>x<sub>28</sub> + x<sub>25</sub></em></p>
+            <p>t = <em>x<sub>0</sub></em> ⋅ ((result) + <em>x<sub>0</sub></em>)<br>
+            and obtain a quadratic equation:<br>
+            <em>x<sub>0</sub></em><sup>2</sup> + <em>x<sub>0</sub></em>(result) - t = 0.</p>
+            <p>Here on out, the job is simple, as <em>x<sub>0</sub></em> will probably take a positive value (take a peak above and notice it's just xor'ed ASCII from the message). From <em>x<sub>0</sub></em> and <em>final[0] = <em>x<sub>0</sub> + x<sub>1</sub></em></em> we find <em>x<sub>1</sub></em> and repeat for all <em>x<sub>i</sub></em>.</p>
+
+
+            <h3>Lastly, the beginning</h3>
+
+            <p>For the last step, there is a message formatting:</p>
+            <pre><code>if len(message) &lt; 29:
+    message = ((message + " ") * 29)[:29]
+            </code></pre>
+            <p>which transforms the message to be <em>at least</em> of length 29, and then the XOR overlay.</p>
+            <pre><code>digest = [0]*32
+
+for i in range(len(message)):
+    digest[i % 29] ^= ord(message[i])
+            </code></pre>
+            <p>The digest (initialized with 0) gets xor'ed with the first 29 characters from the message. Since a ^ 0 = a, this is equivalent to initializing digest with message[ :29] in ASCII.<br>
+Afterwards, the digest index moves back to 0 and it continues to xor it with the rest of the message.</p>
+            <div style="overflow-x:auto;">
+            <table>
+            <thead>
+            <tr>
+                <th>digest</th>
+                <th>0</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>...</th>
+                <th>26</th>
+                <th>27</th>
+                <th>28</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td>m</td>
+                <td>e</td>
+                <td>s</td>
+                <td>s</td>
+                <td>a</td>
+                <td>g</td>
+                <td>e</td>
+                <td>_</td>
+                <td>m</td>
+                <td>e</td>
+                <td>...</td>
+                <td>e</td>
+                <td>s</td>
+                <td>s</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>a</td>
+                <td>g</td>
+                <td>e</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p>It would be impossible to deduce two random characters which xor'ed are equal to digest[i] and also make sense in the message.<br>
+However, since the message should be the flag, we can safely presume it starts with "<strong>MetaCTF{</strong>". And because <code>a ^ b = c ⇔ a = c ^ b</code>, we can check this presumption by xoring digest[ :8] with "MetaCTF{".<br>
+The result was "<strong>ashabyss</strong>", so totally not a coincidence :).</p>
+
+            <p>Remember <em>length</em>?</p>
+            <p>Length was smaller than 2 ⋅ 29, which means there are <em>some</em> letters at the end of digest which were not xored, and <em>len - 29</em> tells us exactly <em>where</em> the raw piece starts.</p>
+            <p>Here we got "<strong>lags_deep_int0_the_h</strong>", which matches "<strong>ashabyss</strong>" perfectly. As a cherry on top, "f" from "flags" and "}" xor'ed give digest[8], confirming the flag:</p>
+            <pre><code>MetaCTF{flags_deep_int0_the_hashabyss}
+            </code></pre>
         </article>
+    </section>
     <footer>
         <p>&copy; 2024 ITania's Blog</p>
     </footer>
