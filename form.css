@@ -32,14 +32,14 @@ nav {
 
 body {
     font-family: 'Courier New', monospace;
-    background-color: rgb(36, 33, 34);
+    background-color: #221b23;
 }
 
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #251d21;
+    background-color: #251d24;
     color: #ff3ea5;
     border: 2px solid #463940;
     padding: 15px;
