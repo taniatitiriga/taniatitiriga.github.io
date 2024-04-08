@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tania Titiriga's IT Blog - form</title>
     <link rel="stylesheet" type="text/css" href="form.css">
+    <script src="form.js"></script>
 </head>
 
 <body>
     <header>
         <h1 align="center" class="blog-title">Welcome to ITania's Blog</h1>
         <nav>
-            <a href="index.html" class="toola">Home</a> 
-            <a href="about.html" class="toola">About</a> 
-            <a href="form.html" class="toola">Form</a> 
+            <a href="index.html" class="toola">Home</a>
+            <a href="about.html" class="toola">About</a>
+            <a href="form.html" class="toola">Form</a>
         </nav>
     </header>
     <div class="container">
-    <form align="center" class="formtool">
-        <p>
-        <label>Greetings, 
-        <select name="salutation">
-        <option>--None--</option>
-        <option>Mr.</option>
-        <option>Ms.</option>
-        <option>Mrs.</option>
-        <option>Dr.</option>
-        <option>Prof.</option>
-        
-        </select>
-        </label>
-        </p>
-        <p> <label>First name: <input name="firstName" /></label></p>
-        <p><label>Last name: <input name="lastName" /></label></p>
-        <p>Gender:
-        <label><input type="radio" name="gender" value="male" />Male</label>
-        <label><input type="radio" name="gender" value="female" />Female</label>
-        </p>
-        <p>Interests:
-            <label><input type="checkbox" name="interest" value="cooking" />Cooking</label>
-            <label><input type="checkbox" name="interest" value="travel" />Travel</label>
-            <label><input type="checkbox" name="interest" value="travel" />IT</label>
-        </p>
-        <p><label>Email:<input type="email" name="email" /></label></p>
-        <p><label>Date of Birth:<input type="date" name="birthDate"></label></p>
-        <p><label>Address: <textarea name="address" cols="30" rows="3"> </textarea>
-        </label></p>
-        <p><button type="submit">Submit</button></p>
-    </form>
+        <form align="center" class="formtool">
+            <p>
+                <label>Greetings,
+                    <select name="salutation">
+                        <option>--None--</option>
+                        <option>Mr.</option>
+                        <option>Ms.</option>
+                        <option>Mrs.</option>
+                        <option>Dr.</option>
+                        <option>Prof.</option>
+
+                    </select>
+                </label>
+            </p>
+            <p> <label>First name: <input type="name" name="firstName" /></label></p>
+            <p><label>Last name: <input name="lastName" /></label></p>
+            <p>Gender:
+                <label><input type="radio" name="gender" value="male" />Male</label>
+                <label><input type="radio" name="gender" value="female" />Female</label>
+            </p>
+            <p>Interests:
+                <label><input type="checkbox" name="interest" value="cooking" />Cooking</label>
+                <label><input type="checkbox" name="interest" value="travel" />Travel</label>
+                <label><input type="checkbox" name="interest" value="travel" />IT</label>
+            </p>
+            <p><label>Email:<input type="email" name="email" /></label></p>
+            <p><label>Date of Birth:<input type="date" name="birthDate"></label></p>
+            <p><label>Address: <textarea name="address" cols="30" rows="3"> </textarea>
+                </label></p>
+            <p><button type="submit">Submit</button></p>
+        </form>
     </div>
 
     <footer>
         <p>&copy; 2024 ITania's Blog</p>
     </footer>
 </body>
+
 </html>
