@@ -98,8 +98,8 @@ body {
 
 .table {
     font-size: 18px;
-    border: 2px solid #fa578a;
-    background-color: #463940;
+    border: 2px solid #db2acc;
+    background-color: #30262b;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -108,22 +108,22 @@ body {
 }
 
 .tabletitle{
-    color: #ffa6bb;
+    color: #fa99f4;
 }
 
 .coltitle{
-    color: #fa578a;
+    color: #db2acc;
 }
 
 .tablecontent{
-    color: #ffa6bb;
+    color: #fa99f4;
 }
 
 
 /*----------------------FOOTER----------------------*/
 
 footer {
-    background-color: #f77795;
+    background-color: #db2acc;
     color: white;
     padding: 10px;
     animation: fadeIn 0.7s ease-in-out forwards;
