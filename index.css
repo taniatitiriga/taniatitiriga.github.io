@@ -124,6 +124,7 @@ body {
 
 
 .writeupbtn {
+    font-family: 'Courier New', monospace;
     display: inline-flex;
     padding: 4px 8px;
     text-align: center;
@@ -140,6 +141,7 @@ body {
 }
 
 #toTop {
+    font-family: 'Courier New', monospace;
     display: none;
     position: fixed;
     bottom: 20px;

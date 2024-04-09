@@ -54,6 +54,7 @@ body {
 }
 
 #toTop {
+    font-family: 'Courier New', monospace;
     display: none;
     position: fixed;
     bottom: 20px;
