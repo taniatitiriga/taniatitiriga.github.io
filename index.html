@@ -25,8 +25,6 @@
         <p><a href="#Events" class="btn">CyberSec Events</a></p>
         <p><a href="#CTF" class="btn">CTF Write-ups</a></p>
         <p><a href="#Gallery" class="btn">Art Gallery</a></p>
-        <!--<p><a href="#Travel" class="btn">Travel</a></p>
-        <p><a href="#Food" class="btn">Food</a></p>-->
 
         <h2>Contact me</h2>
         <p><a target=”_blank” href="https://www.linkedin.com/in/tania-titiriga/" class="btn">LinkedIn</a></p>
@@ -44,7 +42,8 @@
                 career in this field.</p>
             <p>The conferences have inspired me so much; my favourite one has to be Jenny Radcliffe's, on the subject of
                 <strong>social engineering</strong>. Her charisma and passion for this subject made her speech
-                absolutely mesmerizing to watch.</p>
+                absolutely mesmerizing to watch.
+            </p>
 
             <img src="images/Bsides_blog_post.jpg" alt="Jenny Radcliffe on stage at BSides Transylvania 2024"
                 class="postimage">
@@ -78,60 +77,70 @@
             <p class="postdetails">By ITania, Posted on 03/09/2024</p>
             <p>coming soon...</p>
         </article>
+
         <article class="arttool">
             <h2 align="center">Digital Studies</h2>
             <p class="postdetails">By ITania, Posted on 03/09/2024</p>
-            <p>coming soon...</p>
-        </article>
-    </section>
+            <div class="row">
+                <div class="column">
+                    <img src="images/digitaldrawing5.jpg" style="width:100%" onclick="openModal();currentSlide(1)"
+                        class="hover-shadow cursor">
+                </div>
+                <div class="column">
+                    <img src="images/digitaldrawing2.jpg" style="width:100%" onclick="openModal();currentSlide(2)"
+                        class="hover-shadow cursor">
+                </div>
+                <div class="column">
+                    <img src="images/digitaldrawing3.jpg" style="width:100%" onclick="openModal();currentSlide(3)"
+                        class="hover-shadow cursor">
+                </div>
+                <div class="column">
+                    <img src="images/digitaldrawing4.jpg" style="width:100%" onclick="openModal();currentSlide(4)"
+                        class="hover-shadow cursor">
+                </div>
+                <div class="column">
+                    <img src="images/digitaldrawing1.jpg" style="width:100%" onclick="openModal();currentSlide(5)"
+                        class="hover-shadow cursor">
+                </div>
+            </div>
 
-    
-    <section id="Travel" class="postcategory">
-        <article class="arttool">
-            <h2 align="center">Travel blog #1</h2>
-            <p class="postdetails">By ITania, Posted on 03/09/2024</p>
-            <img src="images/bdp.jpg" alt="Parliament building of Budapest" class="postimage">
-            <p><strong>Budapest</strong></p>
-            <p>This is a beautiful view of the Hungarian Parliament building at night, over the Danube.</p>
-            <p>I took this picture on my latest trip!</p>
-        </article>
-        </article>
-    </section>
+            <div id="myModal" class="modal">
+                <span class="close cursor" onclick="closeModal()">&times;</span>
+                <div class="modal-content">
 
-    <section id="Food" class="postcategory">
-        <article class="arttool">
-            <h2 align="center">Culinary blog #2</h2>
-            <p class="postdetails">By ITania, Posted on 03/06/2024</p>
-            <img src="images/recipe2.jpg" alt="Shakshuka bowl" class="postimage">
-            <p><strong>My favourite recipe</strong></p>
-            <p>Shakshuka is the tastiest breakfast recipe I know. To make it, we need:</p>
-            <ul>
-                <li>Tomatoes</li>
-                <li>Olive oil</li>
-                <li>Red pepper</li>
-                <li>Onion</li>
-                <li>Garlic</li>
-                <li>Salt, pepper and parsley</li>
-                <li>Eggs</li>
-                <li>Fresh cheese/Feta</li>
-            </ul>
-        </article>
-        <article class="arttool">
-            <h2 align="center">Culinary blog #1</h2>
-            <p class="postdetails">By ITania, Posted on 03/01/2024</p>
-            <img src="images/ramen.jpg" alt="Picture of a ramen bowl" class="postimage">
-            <p><strong>My famous ramen recipe</strong></p>
-            <p>Here is a recipe I enjoy because its delicious and very easy to make! You only need a couple ingredients:
-            </p>
-            <ul>
-                <li>Soba noodles</li>
-                <li>Scallions</li>
-                <li>Sesame seeds</li>
-                <li>Soy sauce</li>
-                <li>Surimi</li>
-                <li>Any broth</li>
-                <li>Ramen egg</li>
-            </ul>
+                    <div class="mySlides">
+                        <div class="numbertext">1 / 5</div>
+                        <img src="images/digitaldrawing5.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">2 / 5</div>
+                        <img src="images/digitaldrawing2.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">3 / 5</div>
+                        <img src="images/digitaldrawing3.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">4 / 5</div>
+                        <img src="images/digitaldrawing4.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">5 / 5</div>
+                        <img src="images/digitaldrawing1.jpg" style="width:100%">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                    <div class="caption-container">
+                        <p id="caption"></p>
+                    </div>
+                </div>
+            </div>
+            </div>
         </article>
     </section>
 
