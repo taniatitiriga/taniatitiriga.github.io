@@ -1,6 +1,6 @@
 .blog-title {
     opacity: 0;
-    color: #ff46e3;
+    color: #b4fed3;
     animation: fadeIn 0.7s ease-in-out forwards;
 }
 
@@ -8,7 +8,7 @@
 /*----------------------NAV BAR----------------------*/
 
 nav {
-    background-color: #48018e;
+    background-color: #6934cd;
     padding: 8px;
     margin-bottom: 2%;
     animation: fadeIn 0.7s ease-in-out forwards;
@@ -23,7 +23,7 @@ nav {
 }
 
 .toola:hover {
-    background-color: rgb(48, 0, 90);
+    background-color: #350980;
     color: #fa99f4;
 }
 
@@ -32,16 +32,16 @@ nav {
 
 body {
     font-family: 'Courier New', monospace;
-    background-color: #221b23;
+    background-color: #0a080a;
 }
 
 .container {
     align-items: left;
     /* display: flex;
     justify-content: center; */
-    background-color: #251d24;
+    background-color: #19141a;
     color: #ff3ea5;
-    border: 2px solid #463940;
+    border: 2px solid #2d262e;
     padding: 15px;
 }
 
@@ -80,7 +80,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #91004d;
+    background-color: #570091;
 }
 
 label {

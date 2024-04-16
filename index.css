@@ -1,6 +1,6 @@
 .blog-title {
     opacity: 0;
-    color: #ff46e3;
+    color: #b4fed3;
     animation: fadeIn 0.7s ease-in-out forwards;
 }
 
@@ -8,7 +8,7 @@
 /*----------------------NAV BAR----------------------*/
 
 nav {
-    background-color: #48018e;
+    background-color: #6934cd;
     padding: 8px;
     margin-bottom: 0;
     animation: fadeIn 0.7s ease-in-out forwards;
@@ -23,7 +23,7 @@ nav {
 }
 
 .toola:hover {
-    background-color: rgb(48, 0, 90);
+    background-color: #350980;
     color: #fa99f4;
 }
 
@@ -34,8 +34,8 @@ aside {
     position: relative;
     float: left;
     width: 25%;
-    background-color: #3c0070;
-    color: #fa99f4;
+    background-color: #19141a;
+    color: #af7be3;
     padding: 35px;
     box-sizing: border-box;
     text-align: justify;
@@ -46,34 +46,35 @@ aside {
     display: grid;
     padding: 4px 8px;
     text-align: center;
-    background-color: #48018e;
-    color: #e4c1f9;
+    border: 1px solid #ca9cfe;
+    background-color: #201921;
+    color: #ca9cfe;
     text-decoration: none;
     transition: background-color 1s ease, color 0.7s ease;
 }
 
 .btn:hover {
-    background-color: rgb(48, 0, 90);
-    color: #fa99f4;
+    background-color: #0e0c0e;
+    color: #dcbeff;
+    border: 1.5px solid #dcbeff;
 }
 
 
 /*----------------------LINKS----------------------*/
 
 .othera:link {
-    color: #805dfe;
+    color: #ae75ff;
     background-color: transparent;
     text-decoration: none;
 }
 
 .othera:visited {
-    color: #8a44e0;
+    color: #ae75ff;
     background-color: transparent;
     text-decoration: none;
 }
 
 .othera:hover {
-    color: #a391e3;
     background-color: transparent;
     text-decoration: underline;
 }
@@ -89,7 +90,7 @@ aside {
 
 body {
     font-family: 'Courier New', monospace;
-    background-color: #221b23;
+    background-color: #0a080a;
 }
 
 .postcategory {
@@ -104,7 +105,7 @@ body {
 .arttool {
     display: block;
     color: #fa99f4;
-    background-color: #2e262e;
+    background-color: #19141a;
     padding: 15px;
     margin-left: 26%;
     margin-top: 5px;
@@ -128,15 +129,15 @@ body {
     display: inline-flex;
     padding: 4px 8px;
     text-align: center;
-    border: 2px solid #fa99f4;
-    background-color: #423642;
+    border: 1px solid #fa99f4;
+    background-color: #201921;
     color: #fa99f4;
     text-decoration: none;
     transition: background-color 0.5s ease, color 0.7s ease;
 }
 
 .writeupbtn:hover {
-    background-color: #221b23;
+    background-color: #0e0c0e;
     color: #fa99f4;
 }
 

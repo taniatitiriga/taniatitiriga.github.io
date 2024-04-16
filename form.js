@@ -1,10 +1,11 @@
 function validateForm() {
-    let name = document.getElementById("name").value;
+    let name = document.getElementById("firstName").value;
+    let lname = document.getElementById("lastName").value;
     let email = document.getElementById("email").value;
     let message = document.getElementById("message").value;
     let correct = 1;
 
-    if (name == "" || email == "" || message == "") {
+    if (name == "" || lname == "" || email == "" || message == "") {
         alert("Please fill in all fields.");
         correct = 0;
         return false;
