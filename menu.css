@@ -7,8 +7,9 @@ aside {
     padding: 35px;
     box-sizing: border-box;
     text-align: justify;
-    animation: fadeIn 0.7s ease-in-out forwards;
     display: none;
+    box-sizing: border-box;
+    z-index: 100;
 }
 
 .show-sidebar {
@@ -57,15 +58,15 @@ aside {
 
 .openSidebar {
     display: block;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin:5px;
     border-radius: 50%;
     background-color: #201921;
     color: #ca9cfe;
     border: 1px solid #ca9cfe;
     text-align: center;
-    line-height: 40px;
+    line-height: 30px;
     font-size: 20px;
     cursor: pointer;
     transition: background-color 0.7s ease, color 0.7s ease;
@@ -85,5 +86,17 @@ aside {
 
     button {
         display: block;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

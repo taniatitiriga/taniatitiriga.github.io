@@ -75,7 +75,7 @@ body {
     color: #fa99f4;
     background-color: #19141a;
     padding: 15px;
-    margin-left: 26%;
+    margin-left: calc(25% + 50px);
     margin-top: 5px;
     margin-bottom: 10px;
     animation: fadeIn 0.7s ease-in-out forwards;
@@ -308,6 +308,9 @@ img.hover-shadow {
         width: 960px;
         margin: 0 auto;
     }
+    .arttool {
+        margin-left: 0%;
+    }
 }
 
 /* Styles for medium screens */
@@ -316,6 +319,10 @@ img.hover-shadow {
         width: 100%;
         padding: 0 20px;
     }
+
+    .arttool {
+        margin-left: 0%;
+    }
 }
 
 /* Styles for small screens */
@@ -323,5 +330,8 @@ img.hover-shadow {
     .container {
         width: 100%;
         padding: 0 10px;
+    }
+    .arttool {
+        margin-left: 0%;
     }
 }
