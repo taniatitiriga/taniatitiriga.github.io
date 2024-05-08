@@ -1,0 +1,89 @@
+aside {
+    position: relative;
+    float: left;
+    width: 25%;
+    background-color: #19141a;
+    color: #af7be3;
+    padding: 35px;
+    box-sizing: border-box;
+    text-align: justify;
+    animation: fadeIn 0.7s ease-in-out forwards;
+    display: none;
+}
+
+.show-sidebar {
+    display: block;
+}
+
+.btn {
+    display: grid;
+    padding: 4px 8px;
+    text-align: center;
+    border: 1px solid #ca9cfe;
+    background-color: #201921;
+    color: #ca9cfe;
+    text-decoration: none;
+    transition: background-color 1s ease, color 0.7s ease;
+}
+
+.btn:hover {
+    background-color: #0e0c0e;
+    color: #dcbeff;
+    border: 1.5px solid #dcbeff;
+}
+
+#searchContainer {
+    text-align: center;
+    margin-bottom: 10px;
+}
+#searchInput {
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid white;
+}
+#searchButton {
+    padding: 5px 5px;
+    background-color: #201921;
+    color: #ca9cfe;
+    border: 1px solid #ca9cfe;
+    border-radius: 10%;
+    cursor: pointer;
+}
+#searchButton:hover {
+    background-color: #0e0c0e;
+    color: #dcbeff;
+    border: 1px solid #dcbeff;
+}
+
+.openSidebar {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin:5px;
+    border-radius: 50%;
+    background-color: #201921;
+    color: #ca9cfe;
+    border: 1px solid #ca9cfe;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.7s ease, color 0.7s ease;
+}
+
+.openSidebar:hover {
+    background-color: #0e0c0e;
+    color: #dcbeff;
+    border: 1.5px solid #dcbeff;
+}
+
+
+@media screen and (max-width: 768px) {
+    aside {
+        display: none;
+    }
+
+    button {
+        display: block;
+    }
+}
