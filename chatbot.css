@@ -1,0 +1,148 @@
+.blog-title {
+    color: #b4fed3;
+}
+
+
+/*----------------------NAV BAR----------------------*/
+
+nav {
+    background-color: #6934cd;
+    padding: 8px;
+    margin-bottom: 2%;
+}
+
+/*tools for a (nav buttons)*/
+.toola {
+    color: #e4c1f9;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.toola:hover {
+    background-color: #350980;
+    color: #fa99f4;
+}
+
+
+/*----------------------CONTENT----------------------*/
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #0a080a;
+}
+
+.container {
+    width: 100%;
+    max-width: 580px; 
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 340px);
+    overflow-y: auto;
+    background-color: #19141a;
+    color: #ffd8ed;
+    border: 2px solid #2d262e;
+    padding: 15px;
+}
+
+.user-message, .bot-message {
+    max-width: 70%; 
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.user-message {
+    background-color: rgba(31, 0, 169, 0.2);
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: rgba(224, 0, 157, 0.2);
+    align-self: flex-start;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#chat-form {
+    display: block;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#user-input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid white;
+}
+
+#submit-button {
+    padding: 5px 10px;
+    background-color: #201921;
+    color: #ca9cfe;
+    border: 1px solid #ca9cfe;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    background-color: #0e0c0e;
+    color: #dcbeff;
+    border: 1px solid #dcbeff;
+}
+
+
+
+/*----------------------FOOTER----------------------*/
+
+footer {
+    background-color: #db2acc;
+    color: white;
+    padding: 10px;
+    margin-top: 2%;
+}
+
+
+/*----------------------ANIMATIONS----------------------*/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles for large screens */
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 960px;
+        margin: 0 auto;
+    }
+}
+
+/* Styles for medium screens */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+/* Styles for small screens */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+}

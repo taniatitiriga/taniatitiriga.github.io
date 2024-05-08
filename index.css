@@ -63,12 +63,12 @@ aside {
     text-align: center;
     margin-bottom: 10px;
 }
-    #searchInput {
+#searchInput {
     margin-bottom: 5px;
     padding: 5px;
     border: 1px solid white;
 }
-    #searchButton {
+#searchButton {
     padding: 5px 5px;
     background-color: #201921;
     color: #ca9cfe;
@@ -76,10 +76,10 @@ aside {
     border-radius: 10%;
     cursor: pointer;
 }
-    #searchButton:hover {
-        background-color: #0e0c0e;
-        color: #dcbeff;
-        border: 1px solid #dcbeff;
+#searchButton:hover {
+    background-color: #0e0c0e;
+    color: #dcbeff;
+    border: 1px solid #dcbeff;
 }
 
 /*----------------------LINKS----------------------*/
