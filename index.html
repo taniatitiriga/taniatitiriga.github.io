@@ -21,10 +21,18 @@
     </header>
 
     <aside>
+        <h2>Search</h2>
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button id="searchButton" onclick="searchPosts()">Search</button>
+        </div>
+
         <h2>Explore</h2>
-        <p><a href="#Events" class="btn">CyberSec Events</a></p>
-        <p><a href="#CTF" class="btn">CTF Write-ups</a></p>
-        <p><a href="#Gallery" class="btn">Art Gallery</a></p>
+        <p><a href="#" class="btn" onclick="sortPosts('all')">All</a></p>
+        <p><a href="#Events" class="btn" onclick="sortPosts('Events')">CyberSec Events</a></p>
+        <p><a href="#CTF" class="btn" onclick="sortPosts('CTF')">CTF Write-ups</a></p>
+        <p><a href="#Gallery" class="btn" onclick="sortPosts('Gallery')">Art Gallery</a></p>
+
 
         <h2>Contact me</h2>
         <p><a target=”_blank” href="https://www.linkedin.com/in/tania-titiriga/" class="btn">LinkedIn</a></p>

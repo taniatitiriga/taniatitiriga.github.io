@@ -59,6 +59,28 @@ aside {
     border: 1.5px solid #dcbeff;
 }
 
+#searchContainer {
+    text-align: center;
+    margin-bottom: 10px;
+}
+    #searchInput {
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid white;
+}
+    #searchButton {
+    padding: 5px 5px;
+    background-color: #201921;
+    color: #ca9cfe;
+    border: 1px solid #ca9cfe;
+    border-radius: 10%;
+    cursor: pointer;
+}
+    #searchButton:hover {
+        background-color: #0e0c0e;
+        color: #dcbeff;
+        border: 1px solid #dcbeff;
+}
 
 /*----------------------LINKS----------------------*/
 
@@ -94,7 +116,7 @@ body {
 }
 
 .postcategory {
-    display: none;
+    display: block;
 }
 
 .postcategory:target {
@@ -149,7 +171,6 @@ body {
     right: 30px;
     z-index: 99;
     font-size: 18px;
-    border: none;
     outline: none;
     border: 2px solid #fa99f4;
     background-color: #423642;

@@ -54,3 +54,29 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
     captionText.innerHTML = dots[slideIndex - 1].alt;
 }
+
+//search
+function searchPosts() {
+    var searchInput = document.getElementById("searchInput").value.toLowerCase();
+    var articles = document.querySelectorAll(".arttool");
+    for (var i = 0; i < articles.length; i++) {
+        var title = articles[i].querySelector("h2").innerText.toLowerCase();
+        if (title.includes(searchInput)) {
+            articles[i].style.display = "block";
+        } else {
+            articles[i].style.display = "none";
+        }
+    }
+}
+
+function sortPosts(category) {
+    var articles = document.querySelectorAll(".arttool");
+    for (var i = 0; i < articles.length; i++) {
+        var section = articles[i].closest("section");
+        if (category === "all" || section.id === category) {
+            articles[i].style.display = "block";
+        } else {
+            articles[i].style.display = "none";
+        }
+    }
+}
