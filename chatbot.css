@@ -39,7 +39,7 @@ body {
 .chat-container {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 340px);
+    max-height: calc(100vh - 335px);
     overflow-y: auto;
     background-color: #19141a;
     color: #ffd8ed;

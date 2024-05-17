@@ -1,23 +1,13 @@
 let questions = [
     {
-        question: "Do you feel happy?",
+        question: "What would you like to know?",
         options: {
-            a: "Yes",
-            b: "No"
+            a: "About",
+            b: "Beginner resources",
         },
         correctAnswer: "a",
-        correctResponse: "Super!",
-        incorrectResponse: "I am sorry"
-    },
-    {
-        question: "Do you feel sad?",
-        options: {
-            a: "Yes",
-            b: "No"
-        },
-        correctAnswer: "b",
-        correctResponse: "Super!",
-        incorrectResponse: "I am sorry"
+        correctResponse: "This is an ongoing project I have started for my Web Design class. It serves as a showcase of my implication in projects and competitions, as well as my creative works.",
+        incorrectResponse: "I am sorry, you need to wait a little more for this feature :("
     }
 ];
 
