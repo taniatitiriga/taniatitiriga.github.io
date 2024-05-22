@@ -103,6 +103,10 @@ code {
     color: #ef5fff;
     margin-left: auto;
     margin-right: auto;
+    
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
     width: 90%;
     padding: 10px;
 }

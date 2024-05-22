@@ -26,10 +26,68 @@
             <p><strong>Title:</strong> Krotate | <strong>Category:</strong> Crypto | <strong>Difficulty:</strong> medium
                 | 370 points | 5 solves |</p>
             <h3>Introduction</h3>
-            <p>We are provided by the challenge 2 things:</p>
+            <p>This challenge provides the following:</p>
             <ul>
-                <li>.</li>
-                <li>.</li>
+                <li>a cypher text file,</li>
+                <li>a PGP signature:</li>
+                <pre><code>-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEzPHvlUeruVX0heb1tpW1DotF5QYFAmWo5oMACgkQtpW1DotF
+5QY62wwAudnaWyEAHCzLfhoqGRacozcmhagBr+HlPhEOApd6lwIZ01At+Q4Yj5z2
+IYk2kpdxe6fZ5pZZoGyMk5TrNQaeHKn+w9hKdNsaQTZSPSgXT9pQ1FyiaYe5tKEf
+Zs9g4k+mEbK7uJpVfCBfvMnxiARxyNzvTs4/EEP0/KGxwpuWIrU8Xwz51gZFNJgr
+3cjeV6esIxyAoPHSpzvGwC2YA3unsSh9bWS6BjtmOs2As1YC7asbO0dRANcjz//0
+mYDAXM1W68ASrHT22COCpv+r5QBD2tPiKrjdMSYGkSXfWsTAf+bfu5VM/nGUKD/n
+gShplAr2yLdwWkz6UTMboMZRMK5UfjzumX99ICO3hYL0mU3QQXyFnkXtR0ygcGOy
+Xke5v/1O4iNmwmn0G/xBF4s2kfeh9DOFyBJeHtgMuNVXVkZOe2FVDecK9UOR4/7h
+Z63mLMvOhlniIcy5HrIUXfz0HQAgVGye7jgDvBJCS9Y2dc+5mcHraFj+FEfL8QIR
+K7XNR2Tf\n=pum0
+-----END PGP SIGNATURE-----</code></pre>
+                <li>and the script used for encryption:</li>
+                <pre><code>
+from Crypto.Random import get_random_bytes
+
+KEY_LEN = 100
+key = get_random_bytes(KEY_LEN)
+R = 0x01
+
+
+def RGEN():
+    global R
+    R = ((R << 1) ^ (0x71 if (R & 0x80) else 0)) & 0xFF
+    return R
+
+
+def xor_text(text, key):
+    return bytes([text[i] ^ key[i] for i in range(len(text))])
+
+
+def next_key(key):
+    return bytes([key[i] ^ RGEN() for i in range(len(key))])
+
+
+def encrypt(text, key):
+    ciphertext = b""
+
+    #splits text in blocks of 100
+    blocks = [text[i : i + KEY_LEN] for i in range(0, len(text), KEY_LEN)]
+
+    for block in blocks:
+        ciphertext += xor_text(block, key) # simple xor with key
+        key = next_key(key) # xor key with updated R
+
+    return ciphertext
+
+
+# ---
+
+text = b""
+with open("text.txt", "rb") as f:
+    text = f.read()
+
+ciphertext = encrypt(text, key)
+with open("../res/ciphertext.txt", "wb") as g:
+    g.write(ciphertext)</code></pre>
             </ul>
 
             <pre><code>-----BEGIN PGP SIGNED MESSAGE-----
