@@ -1,0 +1,68 @@
+
+.App {
+  text-align: center;
+}
+
+/* Default font */
+* {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  text-decoration: none;
+}
+
+body {
+  font-weight: 100;
+  font-style: normal;
+}
+
+.no-underline{
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-size: large;
+  font-style: normal;
+}
+
+h2 {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.logo {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  padding: 2px;
+  text-decoration: none;
+}
+
+code, pre{
+  font-family: "Red Hat Mono", monospace;
+  font-weight: 300;
+  font-style: normal;
+  color: #7058C6;
+}
+
+
+::selection {
+  background-color: #AB50B9; 
+  color: #EAEAEA;
+}
+
+.techtext{
+  font-family: "Red Hat Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  display: inline;
+  color: #E2F0BC;
+}
+.arttext{
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  display: inline;
+  color: #B684C2;
+}
