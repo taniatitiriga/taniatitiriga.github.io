@@ -34,7 +34,7 @@ export const Home = () => (
           Discover my latest binary endeavours. CTF writeups, events, IT projects and blog await &darr;
         </p>
         <a
-          href="/blog"
+          href="#/blog"
           className="inline-block px-6 py-3 bg-wisteria hover:bg-africanviolet text-white font-semibold text-m no-underline rounded-lg shadow-md  transition duration-300"
         >
           Read Blog
@@ -49,7 +49,7 @@ export const Home = () => (
           Find inspiration and follow the breadcrumbs on the road to becoming a self taught artist with my blog &darr;
         </p>
         <a
-          href="/gallery"
+          href="#/gallery"
           className="inline-block px-6 py-3 bg-wisteria hover:bg-africanviolet text-white font-semibold text-m no-underline rounded-lg shadow-md transition duration-300"
         >
           See Gallery

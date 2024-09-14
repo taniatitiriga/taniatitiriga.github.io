@@ -31,7 +31,6 @@ class App extends Component {
             <Route path="/blog/Krotate" element={<KrotatePost />} />
             <Route path="/blog/Osprey" element={<OspreyPost />} />
             <Route path="/gallery" element={<Gallery />} />
-            {/* <Route path="*" element={<NoMatch />} /> */}
           </Routes>
         </React.Fragment>
         <Footer />
