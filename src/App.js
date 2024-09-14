@@ -1,8 +1,8 @@
 // src/App.js
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Import HashRouter here
 import { Home } from './pages/Home';
-import  About  from './pages/About';
+import About from './pages/About';
 import { Contact } from './pages/Contact';
 import { NavigationBar } from './components/NavigationBar';
 import { Footer } from './components/Footer';
@@ -13,14 +13,12 @@ import Post1 from './pages/ITblog/HashBreaker';
 import KrotatePost from './pages/ITblog/Krotate';
 import OspreyPost from './pages/ITblog/Osprey';
 
-
 import './App.css';
-
 
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router> {/* Using HashRouter instead of BrowserRouter */}
         <React.Fragment>
           <NavigationBar />
           <Routes>
