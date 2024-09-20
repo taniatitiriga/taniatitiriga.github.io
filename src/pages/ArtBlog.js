@@ -19,7 +19,7 @@ const ArtBlog = () => {
                     ))}
                 </div>
             </div>
-            <GoBackButton path="#/gallery" />
+            <GoBackButton path="/gallery" />
         </div>
     );
 };
