@@ -26,7 +26,7 @@ class App extends Component {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/art-blog" element={<ArtBlog />} />
+            <Route path="/gallery/art-blog" element={<ArtBlog />} />
             <Route path="/blog/HashBreaker" element={<Post1 />} />
             <Route path="/blog/Krotate" element={<KrotatePost />} />
             <Route path="/blog/Osprey" element={<OspreyPost />} />

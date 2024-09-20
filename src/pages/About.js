@@ -25,7 +25,7 @@ const About = () => {
           <div className="flex-1 px-12">
             <h1 className="text-3xl font-bold mb-4">About Me</h1>
             <p className={`mb-4 text-lg transition-all duration-300 ease-in-out ${isExpanded ? '' : 'line-clamp-2'}`}>
-              I am a 2nd year computer science student at <a href='https://www.uvt.ro/en/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">UVT</a>, passionate about cybersecurity, IT, algorithmics and art. Here you can find all about the CTF competitions I attended, my volunteering and work experience, as well as my projects.
+              I am a 2nd year computer science student at <a href='https://www.uvt.ro/en/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">UVT</a>, passionate about cybersecurity, IT, algorithmics and design. Here you can find all about the CTF competitions I attended, my volunteering and work experience, as well as my projects.
             </p>
             <button
               onClick={toggleExpand}
@@ -69,32 +69,32 @@ const About = () => {
         {/* CTF table */}
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-4">Capture The Flag competitions</h2>
-          <p className='mb-2 text-sm'>
+          <p className='mb-4 text-lg'>
             In collaboration with <a href='https://cybersec.uvt.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">my team</a>!
           </p>
           <table className="min-w-full table-auto border-collapse border border-gray-400">
             <thead>
               <tr>
                 <th className="px-4 py-2 border border-gray-400">Name</th>
-                <th className="px-4 py-2 border border-gray-400">Place</th>
                 <th className="px-4 py-2 border border-gray-400">Level</th>
+                <th className="px-4 py-2 border border-gray-400">Place</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td className="px-4 py-2 border border-gray-400"><a href='https://cybertm.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">CyberTM 2024</a></td>
-                <td className="px-4 py-2 border border-gray-400">1st</td>
                 <td className="px-4 py-2 border border-gray-400">Regional</td>
+                <td className="px-4 py-2 border border-gray-400">1st</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-gray-400"><a href='https://unbreakable.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">UNbreakable CTF 2024</a></td>
-                <td className="px-4 py-2 border border-gray-400">8th</td>
                 <td className="px-4 py-2 border border-gray-400">National</td>
+                <td className="px-4 py-2 border border-gray-400">8th</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 border border-gray-400"><a href='https://cursedc.tf/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">Cursed CTF 2024</a></td>
-                <td className="px-4 py-2 border border-gray-400">3rd</td>
                 <td className="px-4 py-2 border border-gray-400">International</td>
+                <td className="px-4 py-2 border border-gray-400">3rd</td>
               </tr>
             </tbody>
           </table>
