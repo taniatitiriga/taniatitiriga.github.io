@@ -25,7 +25,7 @@ const About = () => {
           <div className="flex-1 px-12">
             <h1 className="text-3xl font-bold mb-4">About Me</h1>
             <p className={`mb-4 text-lg transition-all duration-300 ease-in-out ${isExpanded ? '' : 'line-clamp-2'}`}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nisl vitae risus bibendum interdum. Vivamus convallis lorem nec lectus suscipit, id sollicitudin nisl blandit. Etiam id nisl vel justo condimentum volutpat a sit amet mauris. Vestibulum nec nunc sit amet eros aliquam feugiat. Cras vehicula orci neque, non feugiat nisl pharetra quis. Nullam ullamcorper lacus sit amet lorem sagittis pharetra.
+              I am a 2nd year computer science student at <a href='https://www.uvt.ro/en/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">UVT</a>, passionate about cybersecurity, IT, algorithmics and art. Here you can find all about the CTF competitions I attended, my volunteering and work experience, as well as my projects.
             </p>
             <button
               onClick={toggleExpand}
