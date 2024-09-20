@@ -72,7 +72,7 @@ export const Gallery = () => {
                     <p className="text-gray-700 mb-4">
                         All my advice and resources for art beginners, in one place.
                     </p>
-                    <a href="#/art-blog" className="inline-block px-6 py-3 bg-wisteria hover:bg-africanviolet text-white font-semibold text-m no-underline rounded-lg shadow-md  transition duration-300">
+                    <a href="#/gallery/art-blog" className="inline-block px-6 py-3 bg-wisteria hover:bg-africanviolet text-white font-semibold text-m no-underline rounded-lg shadow-md  transition duration-300">
                         Read the Blog
                     </a>
                 </div>
