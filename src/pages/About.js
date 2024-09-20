@@ -66,6 +66,66 @@ const About = () => {
           </table>
         </div>
 
+        {/* CTF table */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Capture The Flag competitions</h2>
+          <p className='mb-2 text-sm'>
+            In collaboration with <a href='https://cybersec.uvt.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">my team</a>!
+          </p>
+          <table className="min-w-full table-auto border-collapse border border-gray-400">
+            <thead>
+              <tr>
+                <th className="px-4 py-2 border border-gray-400">Name</th>
+                <th className="px-4 py-2 border border-gray-400">Place</th>
+                <th className="px-4 py-2 border border-gray-400">Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://cybertm.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">CyberTM 2024</a></td>
+                <td className="px-4 py-2 border border-gray-400">1st</td>
+                <td className="px-4 py-2 border border-gray-400">Regional</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://unbreakable.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">UNbreakable CTF 2024</a></td>
+                <td className="px-4 py-2 border border-gray-400">8th</td>
+                <td className="px-4 py-2 border border-gray-400">National</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://cursedc.tf/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">Cursed CTF 2024</a></td>
+                <td className="px-4 py-2 border border-gray-400">3rd</td>
+                <td className="px-4 py-2 border border-gray-400">International</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* volunteer table */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Volunteering</h2>
+          <table className="min-w-full table-auto border-collapse border border-gray-400">
+            <thead>
+              <tr>
+                <th className="px-4 py-2 border border-gray-400">Institution</th>
+                <th className="px-4 py-2 border border-gray-400">Description</th>
+                <th className="px-4 py-2 border border-gray-400">Time Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border border-gray-400">UVT</td>
+                <td className="px-4 py-2 border border-gray-400">Peer to peer tutoring - tutoring new students to help accommodate to university</td>
+                <td className="px-4 py-2 border border-gray-400">Ongoing</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://www.plai.ro/festival/'  className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">PLAI</a></td>
+                <td className="px-4 py-2 border border-gray-400">Cultural festival - site preparation and sales booth</td>
+                <td className="px-4 py-2 border border-gray-400">2022</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         {/* studies table */}
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-4">Studies</h2>
