@@ -82,8 +82,18 @@ const About = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="px-4 py-2 border border-gray-400"><a href='https://cybertm.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">CyberTM 2024</a></td>
-                <td className="px-4 py-2 border border-gray-400">Regional</td>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://www.csaw.io/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">CSAW CTF 2024</a></td>
+                <td className="px-4 py-2 border border-gray-400">International</td>
+                <td className="px-4 py-2 border border-gray-400">Finalists</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://cursedc.tf/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">Cursed CTF 2024</a></td>
+                <td className="px-4 py-2 border border-gray-400">International</td>
+                <td className="px-4 py-2 border border-gray-400">3rd</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://www.facebook.com/events/eveniment-online/chronos-security-ctf-2024/349291848111611/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">Chronos Security CTF 2024</a></td>
+                <td className="px-4 py-2 border border-gray-400">National</td>
                 <td className="px-4 py-2 border border-gray-400">1st</td>
               </tr>
               <tr>
@@ -92,9 +102,9 @@ const About = () => {
                 <td className="px-4 py-2 border border-gray-400">8th</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border border-gray-400"><a href='https://cursedc.tf/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">Cursed CTF 2024</a></td>
-                <td className="px-4 py-2 border border-gray-400">International</td>
-                <td className="px-4 py-2 border border-gray-400">3rd</td>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://cybertm.ro/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">CyberTM 2024</a></td>
+                <td className="px-4 py-2 border border-gray-400">Regional</td>
+                <td className="px-4 py-2 border border-gray-400">1st</td>
               </tr>
             </tbody>
           </table>
@@ -118,7 +128,7 @@ const About = () => {
                 <td className="px-4 py-2 border border-gray-400">Ongoing</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border border-gray-400"><a href='https://www.plai.ro/festival/'  className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">PLAI</a></td>
+                <td className="px-4 py-2 border border-gray-400"><a href='https://www.plai.ro/festival/' className='no-underline text-africanviolet hover:text-codepurple' target="_blank" rel="noopener noreferrer">PLAI</a></td>
                 <td className="px-4 py-2 border border-gray-400">Cultural festival - site preparation and sales booth</td>
                 <td className="px-4 py-2 border border-gray-400">2022</td>
               </tr>
