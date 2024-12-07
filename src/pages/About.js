@@ -36,7 +36,7 @@ const About = () => {
             <a
               href="/TaniaTitiriga_cv.pdf"
               download
-              className="bg-africanviolet text-white py-2 px-2 mx-2 rounded hover:bg-codepurple transition"
+              className="bg-africanviolet text-white no-underline py-2 px-2 mx-2 rounded hover:bg-codepurple transition"
             >
               Download CV
             </a>
