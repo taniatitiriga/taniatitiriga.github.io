@@ -6,6 +6,10 @@ export const NavigationBar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const [showEmailBubble, setShowEmailBubble] = useState(false);
+
+  const toggleEmailBubble = () => setShowEmailBubble(!showEmailBubble);
+
   return (
     <nav className="bg-forestgreen text-platinum relative">
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
@@ -81,6 +85,7 @@ export const NavigationBar = () => {
         >
           About
         </Link>
+        
         {/* Email Bubble for Mobile */}
         <div className="block py-2 pl-1 hover:bg-cambridgeblue no-underline">
           <a href="mailto:taniatitiriga21@gmail.com" className="text-white no-underline hover:underline">
