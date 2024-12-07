@@ -33,6 +33,13 @@ const About = () => {
             >
               {isExpanded ? 'Read Less' : 'Read More'}
             </button>
+            <a
+              href="/my-cv.pdf"
+              download
+              className="bg-africanviolet text-white py-2 px-4 rounded hover:bg-codepurple transition"
+            >
+              Download CV
+            </a>
           </div>
         </div>
 
