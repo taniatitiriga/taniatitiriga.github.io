@@ -34,7 +34,7 @@ const About = () => {
               {isExpanded ? 'Read Less' : 'Read More'}
             </button>
             <a
-              href="/my-cv.pdf"
+              href="/TaniaTitiriga_cv.pdf"
               download
               className="bg-africanviolet text-white py-2 px-2 mx-2 rounded hover:bg-codepurple transition"
             >
