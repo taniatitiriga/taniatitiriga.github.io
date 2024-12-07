@@ -36,16 +36,30 @@ export const NavigationBar = () => {
         </button>
 
         {/* Navbar Links for Desktop */}
-        <div className="hidden lg:flex space-x-4">
+        <div className="hidden lg:flex space-x-4 items-center">
           <Link to="/" className="text-platinum hover:text-africanviolet no-underline">
             Home
           </Link>
           <Link to="/about" className="text-platinum hover:text-africanviolet no-underline">
             About
           </Link>
-          <Link to="/contact" className="text-platinum hover:text-africanviolet no-underline">
-            Contact
-          </Link>
+
+          {/* Email Bubble */}
+          <div className="relative">
+            <button
+              onClick={toggleEmailBubble}
+              className="text-platinum hover:text-africanviolet focus:outline-none"
+            >
+              Contact
+            </button>
+            {showEmailBubble && (
+              <div className="absolute top-full mt-2 bg-platinum text-forestgreen p-2 rounded shadow-lg">
+                <a href="mailto:taniatitiriga21@gmail.com" className="no-underline hover:underline">
+                  taniatitiriga21@gmail.com
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -67,13 +81,12 @@ export const NavigationBar = () => {
         >
           About
         </Link>
-        <Link
-          to="/contact"
-          className="block text-white py-2 pl-1 hover:bg-cambridgeblue no-underline"
-          onClick={() => setIsOpen(false)}
-        >
-          Contact
-        </Link>
+        {/* Email Bubble for Mobile */}
+        <div className="block py-2 pl-1 hover:bg-cambridgeblue no-underline">
+          <a href="mailto:taniatitiriga21@gmail.com" className="text-white no-underline hover:underline">
+            Contact: taniatitiriga21@gmail.com
+          </a>
+        </div>
       </div>
     </nav>
   );
