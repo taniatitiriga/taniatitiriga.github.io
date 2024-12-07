@@ -36,7 +36,7 @@ const About = () => {
             <a
               href="/my-cv.pdf"
               download
-              className="bg-africanviolet text-white py-2 px-4 rounded hover:bg-codepurple transition"
+              className="bg-africanviolet text-white py-2 px-2 mx-2 rounded hover:bg-codepurple transition"
             >
               Download CV
             </a>
