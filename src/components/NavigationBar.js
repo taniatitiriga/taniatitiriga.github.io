@@ -59,7 +59,7 @@ export const NavigationBar = () => {
             {showEmailBubble && (
               <div
                 className="absolute top-full mt-2 right-0 bg-platinum text-forestgreen p-2 rounded shadow-lg max-w-xs"
-                style={{ transform: "translateX(-50%)" }}
+                style={{ right: "1rem" }} 
               >
                 <a href="mailto:taniatitiriga21@gmail.com" className="text-forestgreen no-underline hover:underline">
                   taniatitiriga21@gmail.com
