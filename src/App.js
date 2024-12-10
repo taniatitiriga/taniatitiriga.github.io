@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Import HashRouter here
 import { Home } from './pages/Home';
 import About from './pages/About';
-import { Contact } from './pages/Contact';
+// import { Contact } from './pages/Contact';
 import { NavigationBar } from './components/NavigationBar';
 import { Footer } from './components/Footer';
 import { Blog } from './pages/Blog';
@@ -24,7 +24,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/gallery/art-blog" element={<ArtBlog />} />
             <Route path="/blog/HashBreaker" element={<Post1 />} />
