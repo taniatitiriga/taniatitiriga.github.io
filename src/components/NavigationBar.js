@@ -3,12 +3,34 @@ import { Link } from 'react-router-dom';
 
 export const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showEmailBubble, setShowEmailBubble] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const [showEmailBubble, setShowEmailBubble] = useState(false);
+  const handleDocumentClickOrScroll = (event) => {
+    setShowEmailBubble(false);
+  };
 
-  const toggleEmailBubble = () => setShowEmailBubble(!showEmailBubble);
+  const toggleEmailBubble = (event) => {
+    event.stopPropagation(); // Prevent event from propagating to document
+    setShowEmailBubble((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (showEmailBubble) {
+      document.addEventListener('click', handleDocumentClickOrScroll);
+      document.addEventListener('scroll', handleDocumentClickOrScroll);
+    } else {
+      document.removeEventListener('click', handleDocumentClickOrScroll);
+      document.removeEventListener('scroll', handleDocumentClickOrScroll);
+    }
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      document.removeEventListener('click', handleDocumentClickOrScroll);
+      document.removeEventListener('scroll', handleDocumentClickOrScroll);
+    };
+  }, [showEmailBubble]);
 
   return (
     <nav className="bg-forestgreen text-platinum relative">
