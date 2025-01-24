@@ -69,6 +69,12 @@ export const NavigationBar = () => {
           <Link to="/about" className="text-platinum hover:text-africanviolet no-underline">
             About
           </Link>
+          <Link to="/blog" className="text-platinum hover:text-africanviolet no-underline">
+            Blog
+          </Link>
+          <Link to="/gallery" className="text-platinum hover:text-africanviolet no-underline">
+            Gallery
+          </Link>
 
           {/* Email Bubble */}
           <div className="relative">
@@ -109,6 +115,20 @@ export const NavigationBar = () => {
           onClick={() => setIsOpen(false)}
         >
           About
+        </Link>
+        <Link
+          to="/blog"
+          className="block text-white py-2 pl-1 hover:bg-cambridgeblue no-underline"
+          onClick={() => setIsOpen(false)}
+        >
+          Blog
+        </Link>
+        <Link
+          to="/gallery"
+          className="block text-white py-2 pl-1 hover:bg-cambridgeblue no-underline"
+          onClick={() => setIsOpen(false)}
+        >
+          Gallery
         </Link>
 
         {/* Email Bubble for Mobile */}

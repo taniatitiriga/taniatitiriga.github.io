@@ -13,7 +13,7 @@ const GoBackButton = ({ path }) => {
 
     return (
         <button
-            className="fixed left-4 top-1/2 transform -translate-y-1/2 bg-wisteria hover:bg-africanviolet text-white p-2 rounded-full shadow-md transition"
+            className="fixed left-4 top-20 transform -translate-y-1/2 bg-wisteria hover:bg-africanviolet text-white p-2 rounded-full shadow-md transition"
             onClick={goBack}
         >
             <FaArrowLeft />
