@@ -37,7 +37,7 @@ export const NavigationBar = () => {
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="logo text-xl text-platinum">
-          ITania
+          taniusca
         </Link>
 
         {/* Hamburger Button */}
