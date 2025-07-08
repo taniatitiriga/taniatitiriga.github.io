@@ -27,9 +27,9 @@
 		class="pointer-events-auto absolute right-0 top-16 bottom-0 flex flex-col justify-center p-10 text-slate-100 {sidebarWidthClass}"
 	>
 		<div class="flex flex-col items-end">
-			<h2 class="text-4xl text-white" style="font-family: 'Amatic SC', cursive;">About me</h2>
+			<h2 class="text-3xl text-white" style="font-family: 'Amatic SC', cursive;">About me</h2>
 
-			<p class="text-2xl my-4 ml-5 text-right">
+			<p class="text-xl my-4 ml-5 text-right">
 				I'm Tania, a computer science student passionate about cryptography and cybersecurity in general. <br/><br/>
 				Let's get in touch!
 			</p>
