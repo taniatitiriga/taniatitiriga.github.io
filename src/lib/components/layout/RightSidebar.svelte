@@ -30,8 +30,8 @@
 			<h2 class="text-4xl text-white" style="font-family: 'Amatic SC', cursive;">About me</h2>
 
 			<p class="text-2xl my-4 ml-5 text-right">
-				This is a placeholder for a short and engaging paragraph about myself. I can talk about my
-				passions, skills, and what drives me as a professional.
+				I'm Tania, a computer science student passionate about cryptography and cybersecurity in general.
+				Let's get in touch!
 			</p>
 
 			<a
