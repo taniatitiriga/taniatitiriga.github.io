@@ -1,15 +1,14 @@
 @import 'tailwindcss';
-/* src/app.css */
+
+/* Your custom, global styles go AFTER the directives. */
 html,
 body {
-	/* Ensure the main document elements fill the viewport */
 	height: 100%;
 	width: 100%;
-	
-	/* Prevent any potential scrollbars caused by tiny layout miscalculations */
 	overflow: hidden;
-	
-	/* Reset default browser margins */
 	margin: 0;
 	padding: 0;
+
+	/* THIS IS THE KEY: Set the default font for the whole app */
+	font-family: 'Cormorant', serif;
 }
