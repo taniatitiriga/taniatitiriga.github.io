@@ -1,1 +1,15 @@
 @import 'tailwindcss';
+/* src/app.css */
+html,
+body {
+	/* Ensure the main document elements fill the viewport */
+	height: 100%;
+	width: 100%;
+	
+	/* Prevent any potential scrollbars caused by tiny layout miscalculations */
+	overflow: hidden;
+	
+	/* Reset default browser margins */
+	margin: 0;
+	padding: 0;
+}
