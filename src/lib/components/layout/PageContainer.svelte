@@ -1,3 +1,3 @@
-<div class="text-white">
+<div class="text-white m-8">
 	<slot />
 </div>

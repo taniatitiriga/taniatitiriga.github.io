@@ -17,22 +17,17 @@
 	<div
 		in:fly={{ x: 100, duration: 600, delay: 300 }}
 		out:fly={{ x: 100, duration: 400 }}
-		class="pointer-events-auto absolute right-0 top-16 bottom-0 flex flex-col justify-center p-10 text-slate-100 {sidebarWidthClass}"
+		class="pointer-events-auto absolute right-0 top-16 bottom-0 flex flex-col justify-center pl-6 py-10 pr-5 text-slate-100 {sidebarWidthClass}"
 	>
 		<div class="flex flex-col items-end">
-			<h2 class="text-3xl text-white" style="font-family: 'Amatic SC', cursive;">About me</h2>
-
-			<p class="text-xl my-4 ml-5 text-right">
-				I'm Tania, a computer science student passionate about cryptography and cybersecurity in general. <br/><br/>
-				Let's get in touch!
-			</p>
+			<h2 class="text-3xl text-white mb-5" style="font-family: 'Amatic SC', cursive;">Let's get in touch!<br/></h2>
 
 			<a
 				href="/CV_TaniaTitiriga.pdf"
 				download
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-xl mb-6 rounded-md bg-white/10 px-5 py-2 text-white transition-colors hover:bg-white/20"
+				class="text-xl mb-6 rounded-md bg-white/10 px-3 py-1 text-white transition-colors hover:bg-white/20"
 			>
 				Download CV
 			</a>

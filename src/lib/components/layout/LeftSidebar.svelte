@@ -24,7 +24,8 @@
                     path: 'writeups/TryHackMe',
                     expanded: false,
                     children: [
-                        { name: 'Blue', path: 'writeups/TryHackMe/Blue' }
+                        { name: 'Blue', path: 'writeups/TryHackMe/Blue' },
+                        { name: 'Metasploit: Meterpreter', path: 'writeups/TryHackMe/Metasploit-Meterpreter' }
                     ]
                 }
             ]
@@ -39,8 +40,8 @@
         }
     ];
 
-    // Toggle expand/collapse for a navigation item
-    function toggleExpand(item: (typeof nav)[0] | (typeof nav)[0]['children'][0]) {
+    // Toggle expand/collapse for a navigation item (support any expandable item)
+    function toggleExpand(item: { expanded: boolean }) {
         item.expanded = !item.expanded;
         nav = nav; // Trigger Svelte reactivity
     }
@@ -51,7 +52,6 @@
     }
 </script>
 
-<!-- Bind window size for responsive sidebar -->
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
 {#if show}
@@ -69,16 +69,19 @@
                             {#if section.children && section.children.length > 0}
                                 <button
                                     type="button"
-                                    class="w-3 h-3 rounded-full bg-slate-300 hover:bg-white transition-colors"
+                                    class="text-slate-500 hover:text-white transition-colors"
                                     on:click={() => toggleExpand(section)}
-                                    aria-label="Expand {section.name}"
-                                ></button>
+                                    aria-label="{section.expanded ? `Collapse ${section.name}` : `Expand ${section.name}`}"
+                                >
+                                    <i class="fas fa-star text-xs"></i>
+                                </button>
                             {/if}
                         </div>
                         <!-- Section navigation button -->
                         <button
-                            class="text-2xl font-bold text-left hover:text-white"
+                            class="text-3xl font-bold text-left hover:text-white"
                             on:click={() => handleNavigate(section.path)}
+                            style="font-family: 'Amatic SC', cursive;" 
                         >
                             {section.name}
                         </button>
@@ -94,15 +97,17 @@
                                             {#if child.children && child.children.length > 0}
                                                 <button
                                                     type="button"
-                                                    class="w-3 h-3 rounded-full bg-slate-300 hover:bg-white transition-colors"
+                                                    class="text-slate-500 hover:text-white transition-colors"
                                                     on:click={() => toggleExpand(child)}
-                                                    aria-label="Expand {child.name}"
-                                                ></button>
+                                                    aria-label="{child.expanded ? `Collapse ${child.name}` : `Expand ${child.name}`}"
+                                                >
+                                                    <i class="fas fa-star text-xs"></i>
+                                                </button>
                                             {/if}
                                         </div>
                                         <!-- Child navigation button -->
                                         <button
-                                            class="text-xl text-left hover:text-white"
+                                            class="text-2xl text-left hover:text-white"
                                             on:click={() => handleNavigate(child.path)}
                                         >
                                             {child.name}
@@ -115,7 +120,7 @@
                                                 <li>
                                                     <!-- Sub-item navigation button -->
                                                     <button
-                                                        class="w-full pl-6 text-left text-lg text-slate-300 hover:text-white"
+                                                        class="w-full pl-6 text-left text-xl text-slate-300 hover:text-white"
                                                         on:click={() => handleNavigate(sub.path)}
                                                     >
                                                         {sub.name}

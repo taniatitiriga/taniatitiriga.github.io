@@ -14,8 +14,9 @@
 </svelte:head>
 
 {#if showContent}
-	<div class="flex flex-col items-center justify-center min-h-screen text-center text-white">
-		<h1 class="text-4xl mb-4">Welcome to my site</h1>
-		<p class="text-xl">This is the landing page mock content.</p>
+	<div class="flex flex-col items-center justify-center h-full text-center text-white">
+		<h1 class="text-4xl mb-4" style="font-family: 'Amatic SC', cursive;" >Welcome to my website!</h1>
+		<p class="text-2xl">I'm Tania, a computer science student passionate about cryptography and cybersecurity in general.</p>
+		<p class="text-2xl">Check out my writeups and projects!</p>
 	</div>
 {/if}

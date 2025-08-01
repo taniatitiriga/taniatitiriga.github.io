@@ -1,9 +1,9 @@
-// svelte.config.js
-
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex } from 'mdsvex';
-import path from 'node:path'; // <-- 1. Import the Node.js path module
+import path from 'node:path';
+import { codeToHtml } from 'shiki';
+import rehypeExternalLinks from 'rehype-external-links';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -12,12 +12,20 @@ const config = {
 		vitePreprocess(),
 		mdsvex({
 			extensions: ['.md'],
-			// 2. We create an absolute path that the preprocessor can always find.
 			layout: {
 				_: path.resolve('./src/lib/components/layout/ContentLayout.svelte')
 			},
+			rehypePlugins: [
+				[rehypeExternalLinks.default, { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+			],
 			highlight: {
-				alias: { sh: 'bash', py: 'python', js: 'javascript' }
+				highlighter: async (code, lang = 'text') => {
+					const html = await codeToHtml(code, {
+						lang,
+						theme: 'dracula'
+					});
+					return `{@html \`${html}\` }`;
+				}
 			}
 		})
 	],

@@ -6,14 +6,14 @@
 </script>
 
 <PageContainer>
-	<h2 class="text-2xl mb-4">TryHackMe Writeups</h2>
+	<h2 class="text-4xl mb-4">TryHackMe Writeups</h2>
 	<ul>
 		{#each data.writeups as post}
 			<li class="mb-2">
-				<a href={`/writeups/TryHackMe/${post.slug}`} class="text-xl hover:underline">
+				<a href={`/writeups/TryHackMe/${post.slug}`} class="text-3xl hover:underline">
 					{post.title}
 				</a>
-				<p class="text-gray-400 text-sm">{post.excerpt}</p>
+				<p class="text-gray-400 text-2xl">{post.excerpt}</p>
 			</li>
 		{/each}
 	</ul>

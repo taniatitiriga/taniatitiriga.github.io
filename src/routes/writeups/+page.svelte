@@ -6,11 +6,11 @@
 </script>
 
 <PageContainer>
-	<h1 class="text-3xl mb-4">Writeups</h1>
+	<h1 class="text-4xl mb-4">Writeups</h1>
 	<ul>
 		{#each data.categories as category}
 			<li>
-				<a href={`/writeups/${category}`} class="text-xl hover:underline">{category}</a>
+				<a href={`/writeups/${category}`} class="text-3xl hover:underline">{category}</a>
 			</li>
 		{/each}
 	</ul>

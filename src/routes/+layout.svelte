@@ -31,7 +31,7 @@
     // Compute orientation and main content class based on sidebar state
     $: isVertical = windowHeight > windowWidth;
     $: mainClass = (() => {
-        const baseClass = 'absolute top-16 bottom-4 z-10 transition-all duration-500 delay 200';
+        const baseClass ='pointer-events-auto absolute top-[15%] bottom-4 z-30 transition-all duration-500';
         if (turnedState === 'left') {
             return `${baseClass} left-4 ${isVertical ? 'right-4 ml-[50%]' : 'right-4 ml-[16.66%]'}`;
         }

@@ -1,9 +1,12 @@
----
-title: Blue Machine Writeup
-excerpt: "This writeup covers the Blue machine on TryHackMe."
----
+# Blue
+This is a writeup for the machine Blue on TryHackMe.
+
+
+https://tryhackme.com/room/blue
+
 
 ## Recon
+
 ```bash
 ┌──(kali㉿kali)-[~]
 └─$ nmap -sV -vv --script vuln 10.10.3.160      
