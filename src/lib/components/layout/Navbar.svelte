@@ -1,4 +1,5 @@
 <!-- src/lib/components/layout/Navbar.svelte -->
+ 
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
@@ -35,11 +36,12 @@
 </button>
 
 <!-- Center Button -->
-<button
-	on:click={() => dispatch('reset')}
-	disabled={isAnimating}
-	class="pointer-events-auto absolute left-1/2 top-4 -translate-x-1/2 rounded-md bg-transparent px-4 py-2 text-3xl text-white transition-all hover:opacity-80 disabled:opacity-50"
-	style="font-family: 'Amatic SC', cursive;"
->
-	TANIUSCA
-</button>
+<a href="/" on:click={() => dispatch('reset')}>
+	<button
+		disabled={isAnimating}
+		class="pointer-events-auto absolute left-1/2 top-4 -translate-x-1/2 rounded-md bg-transparent px-4 py-2 text-3xl text-white transition-all hover:opacity-80 disabled:opacity-50"
+		style="font-family: 'Amatic SC', cursive;"
+	>
+		TANIUSCA
+	</button>
+</a>

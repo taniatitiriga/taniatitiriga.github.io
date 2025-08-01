@@ -1,22 +1,33 @@
 // svelte.config.js
-import adapter from '@sveltejs/adapter-static'; // <-- IMPORT THIS
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+import adapter from '@sveltejs/adapter-static';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';   // <-- IMPORTANT FIX
+import { mdsvex } from 'mdsvex';
+
+const dev = process.argv.includes('dev');
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: vitePreprocess(),
+  extensions: ['.svelte', '.md'],
+  preprocess: [
+    vitePreprocess(),
+    mdsvex({
+      extensions: ['.md'],
+      highlight: {
+        alias: { sh: 'bash', py: 'python', js: 'javascript' }
+      }
+    })
+  ],
   kit: {
-    // Use adapter-static for GitHub Pages
     adapter: adapter({
-      // Default options are fine for a user/organization page
       pages: 'build',
       assets: 'build',
-      fallback: '404.html', // Use 404.html for SPA-like routing
+      fallback: '404.html',
       precompress: false
     }),
-    // IMPORTANT: Because you are using a user page (YourUsername.github.io)
-    // and NOT a project page (YourUsername.github.io/repo-name),
-    // you DO NOT need to set the `paths.base` option. Keep it clean.
+    paths: {
+      base: '/website' 
+    }
   }
 };
 

@@ -3,25 +3,17 @@
 
 	export let show: boolean;
 
-	// NEW: Variables to store window dimensions
 	let windowWidth: number;
 	let windowHeight: number;
 
-	// NEW: A reactive statement that automatically updates whenever the window size changes
 	$: isVertical = windowHeight > windowWidth;
 
-	// NEW: A computed class name that changes based on the orientation
 	$: sidebarWidthClass = isVertical ? 'w-1/2' : 'w-1/6';
 </script>
 
-<!-- NEW: This special Svelte element binds our variables to the browser window's size -->
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
 {#if show}
-	<!--
-    RESPONSIVE FIX: We now use our dynamic `sidebarWidthClass` variable
-    instead of a hardcoded width class.
-  -->
 	<div
 		transition:fly={{ x: 100, duration: 400, delay: 200 }}
 		class="pointer-events-auto absolute right-0 top-16 bottom-0 flex flex-col justify-center p-10 text-slate-100 {sidebarWidthClass}"

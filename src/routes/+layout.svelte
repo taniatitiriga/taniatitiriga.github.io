@@ -1,4 +1,5 @@
 <!-- src/routes/+layout.svelte -->
+ 
 <script lang="ts">
 	import '../app.css';
 	import Scene from '$lib/components/Scene.svelte';

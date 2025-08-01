@@ -53,7 +53,6 @@
 		);
 		camera.position.z = 2;
 
-		// YOUR CHANGE: Using your preferred camera Y position
 		camera.position.y = 0;
 
 		const scene = new THREE.Scene();
@@ -63,23 +62,23 @@
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-		// Ambient light for fill
+		// ambient light
 		const ambientLight = new THREE.AmbientLight(0xd4d1ba, 1);
 		scene.add(ambientLight);
 
-		// Soft top light (dreamy glow)
-		const lightTop = new THREE.DirectionalLight(0xa2a7f5, 0.5);
+		// top light
+		const lightTop = new THREE.DirectionalLight(0xa2a7f5, 0.3);
 		lightTop.position.set(0, 5, 5);
 		lightTop.lookAt(0, 0, 0);
 		scene.add(lightTop);
 
-		// Gentle left cool light
-		const lightLeft = new THREE.DirectionalLight(0xb0f7f3, 1);
+		// left light
+		const lightLeft = new THREE.DirectionalLight(0x86cc83, 1);
 		lightLeft.position.set(-4, 4, 3);
 		lightLeft.lookAt(0, 0, 0);
 		scene.add(lightLeft);
 
-		// Gentle right cooler light
+		// right light
 		const lightRight = new THREE.DirectionalLight(0xcba9e8, 1);
 		lightRight.position.set(4, 4, 3);
 		lightRight.lookAt(0, 0, 0);
@@ -88,21 +87,20 @@
 		const geometry = new THREE.BoxGeometry(1, 1, 1);
 
 		const material = new THREE.MeshPhysicalMaterial({
-			color: 0x1a1d2e,
+			color: 0x141b3d,
 			metalness: 0.2,
 			roughness: 0.65,
 			clearcoat: 0.8,
-			clearcoatRoughness: 0.1,
+			clearcoatRoughness: 0.7,
 			sheen: 0.7,
 			sheenColor: new THREE.Color(0x11143d),
-			transmission: 0.0 // Solid pearl
+			transmission: 0.0 // solid
 			});
 
 
 		cube = new THREE.Mesh(geometry, material);
 		scene.add(cube);
 
-		// YOUR CHANGE: Using your preferred cube X rotation
 		cube.rotation.x = 0.05;
 
 		scene.add(cube);
@@ -120,7 +118,7 @@
             const aspect = width / height;
             const frustumSize = 1;
 
-            // Update orthographic camera bounds
+            // orthographic camera bounds
             camera.left = -frustumSize * aspect / 2;
             camera.right = frustumSize * aspect / 2;
             camera.top = frustumSize / 2;
@@ -130,21 +128,21 @@
             renderer.setSize(width, height);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // Convert screen pixels to world units
+            // screen pixels to world units
             const unitPerPixel = frustumSize / height;
 
             const baseSize = width * unitPerPixel;
             const prismHeight = height * unitPerPixel;
 
-            // Set cube scale — square base, full screen height
+            // cube scale — square base, full screen height
             cube.scale.set(baseSize, prismHeight, baseSize);
 
-            // Constants for rotation curve
+            // rotation curve
             const minRotation = 0.05;
             const maxRotation = 2.25;
             const scaleFactor = 130; // Tune this for your feel
 
-            // Compute inverse proportional rotation
+            // inverse proportional rotation
             const rawRotation = scaleFactor / window.innerWidth;
             const clampedRotation = Math.min(Math.max(rawRotation, minRotation), maxRotation);
 
