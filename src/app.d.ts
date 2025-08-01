@@ -8,6 +8,11 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	declare namespace svelte.JSX {
+		interface SvelteComponent {
+			isAnimating?: boolean;
+		}
+	}
 }
 
 export {};

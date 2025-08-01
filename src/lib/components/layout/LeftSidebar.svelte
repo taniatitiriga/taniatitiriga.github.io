@@ -1,77 +1,135 @@
-<!-- src/lib/components/layout/LeftSidebar.svelte -->
- 
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { base } from '$app/paths';
-	import { fly } from 'svelte/transition';
-	import { createEventDispatcher } from 'svelte';
+    import { fly } from 'svelte/transition';
+    import { createEventDispatcher } from 'svelte';
 
-	const dispatch = createEventDispatcher();
+    export let show: boolean;
+    const dispatch = createEventDispatcher();
 
-	export let show: boolean;
+    let windowWidth: number;
+    let windowHeight: number;
 
-	let windowWidth: number;
-	let windowHeight: number;
+    // Responsive sidebar width based on orientation
+    $: isVertical = windowHeight > windowWidth;
+    $: sidebarWidthClass = isVertical ? 'w-1/2' : 'w-1/6';
 
-	$: isVertical = windowHeight > windowWidth;
-	$: sidebarWidthClass = isVertical ? 'w-1/2' : 'w-1/6';
+    // Navigation structure with expandable sections
+    let nav = [
+        {
+            name: 'Writeups',
+            path: 'writeups',
+            expanded: false,
+            children: [
+                {
+                    name: 'TryHackMe',
+                    path: 'writeups/TryHackMe',
+                    expanded: false,
+                    children: [
+                        { name: 'Blue', path: 'writeups/TryHackMe/Blue' }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'Projects',
+            path: 'projects',
+            expanded: false,
+            children: [
+                { name: 'Clifford Benchmark', path: 'projects/CliffordBenchmark' }
+            ]
+        }
+    ];
 
-	const nav = [
-		{
-			name: 'Writeups',
-			children: [
-				{
-					name: 'TryHackMe',
-					path: 'writeups/TryHackMe',
-					children: [{ name: 'Blue', path: 'writeups/TryHackMe/Blue' }]
-				}
-			]
-		},
-		{
-			name: 'Projects',
-			children: [
-				{ name: 'Clifford Benchmark', path: 'projects/CliffordBenchmark' }
-			]
-		}
-	];
+    // Toggle expand/collapse for a navigation item
+    function toggleExpand(item: (typeof nav)[0] | (typeof nav)[0]['children'][0]) {
+        item.expanded = !item.expanded;
+        nav = nav; // Trigger Svelte reactivity
+    }
 
-	function navigateAndAnimate(path: string) {
-		dispatch('turnMore'); // trigger animation
-		const formattedPath = path.startsWith('/') ? path : '/' + path;
-		goto(`${base}${formattedPath}`);
-	}
-
+    // Dispatch navigation event
+    function handleNavigate(path: string) {
+        dispatch('navigate', { path });
+    }
 </script>
 
+<!-- Bind window size for responsive sidebar -->
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
 {#if show}
-	<div
-		transition:fly={{ x: -100, duration: 400, delay: 200 }}
-		class="pointer-events-auto absolute left-0 top-16 bottom-0 flex flex-col justify-start p-6 text-slate-100 {sidebarWidthClass}"
-	>
-		<nav>
-			{#each nav as section}
-				<details>
-				<summary>{section.name}</summary>
-				{#each section.children as child}
-					<details>
-					<summary>
-						<button on:click={() => navigateAndAnimate(child.path)}>
-						{child.name}
-						</button>
-					</summary>
-					{#if child.children}
-						{#each child.children as sub}
-						<button class="ml-6" on:click={() => navigateAndAnimate(sub.path)}>
-							{sub.name}
-						</button>
-						{/each}
-					{/if}
-					</details>
-				{/each}
-				</details>
-			{/each}
-		</nav>
-	</div>
+    <div
+        in:fly={{ x: -100, duration: 600, delay: 300 }}
+        out:fly={{ x: -100, duration: 400 }}
+        class="pointer-events-auto absolute left-0 top-16 bottom-0 flex flex-col justify-center overflow-y-auto p-6 text-slate-100 {sidebarWidthClass}"
+    >
+        <ul class="w-full space-y-4">
+            {#each nav as section}
+                <li class="flex flex-col items-start">
+                    <div class="flex items-center gap-1">
+                        <!-- Expand/collapse button for sections with children -->
+                        <div class="flex items-center justify-center w-6 h-6">
+                            {#if section.children && section.children.length > 0}
+                                <button
+                                    type="button"
+                                    class="w-3 h-3 rounded-full bg-slate-300 hover:bg-white transition-colors"
+                                    on:click={() => toggleExpand(section)}
+                                    aria-label="Expand {section.name}"
+                                ></button>
+                            {/if}
+                        </div>
+                        <!-- Section navigation button -->
+                        <button
+                            class="text-2xl font-bold text-left hover:text-white"
+                            on:click={() => handleNavigate(section.path)}
+                        >
+                            {section.name}
+                        </button>
+                    </div>
+
+                    {#if section.expanded}
+                        <ul class="w-full pl-3 pt-2 space-y-2 border-l border-slate-700 ml-3">
+                            {#each section.children as child}
+                                <li class="flex flex-col items-start">
+                                    <div class="flex items-center gap-1">
+                                        <!-- Expand/collapse button for child items with children -->
+                                        <div class="flex items-center justify-center w-6 h-6">
+                                            {#if child.children && child.children.length > 0}
+                                                <button
+                                                    type="button"
+                                                    class="w-3 h-3 rounded-full bg-slate-300 hover:bg-white transition-colors"
+                                                    on:click={() => toggleExpand(child)}
+                                                    aria-label="Expand {child.name}"
+                                                ></button>
+                                            {/if}
+                                        </div>
+                                        <!-- Child navigation button -->
+                                        <button
+                                            class="text-xl text-left hover:text-white"
+                                            on:click={() => handleNavigate(child.path)}
+                                        >
+                                            {child.name}
+                                        </button>
+                                    </div>
+
+                                    {#if child.expanded && child.children}
+                                        <ul class="w-full pl-3 pt-2 space-y-1 border-l border-slate-700 ml-3">
+                                            {#each child.children as sub}
+                                                <li>
+                                                    <!-- Sub-item navigation button -->
+                                                    <button
+                                                        class="w-full pl-6 text-left text-lg text-slate-300 hover:text-white"
+                                                        on:click={() => handleNavigate(sub.path)}
+                                                    >
+                                                        {sub.name}
+                                                    </button>
+                                                </li>
+                                            {/each}
+                                        </ul>
+                                    {/if}
+                                </li>
+                            {/each}
+                        </ul>
+                    {/if}
+                </li>
+            {/each}
+        </ul>
+    </div>
 {/if}

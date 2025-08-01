@@ -1,112 +1,139 @@
-<!-- src/routes/+layout.svelte -->
- 
 <script lang="ts">
-	import '../app.css';
-	import Scene from '$lib/components/Scene.svelte';
-	import Navbar from '$lib/components/layout/Navbar.svelte';
-	import LeftSidebar from '$lib/components/layout/LeftSidebar.svelte';
-	import RightSidebar from '$lib/components/layout/RightSidebar.svelte';
+    // Import global styles and components
+    import '../app.css';
+    import Scene from '$lib/components/Scene.svelte';
+    import Navbar from '$lib/components/layout/Navbar.svelte';
+    import LeftSidebar from '$lib/components/layout/LeftSidebar.svelte';
+    import RightSidebar from '$lib/components/layout/RightSidebar.svelte';
+    import { goto } from '$app/navigation';
+    import { base } from '$app/paths';
+    import { page } from '$app/stores';
+    import { onDestroy } from 'svelte';
 
-	let sceneComponent: Scene;
-	let isAnimating = false;
+    // State variables
+    let sceneComponent: Scene;
+    let isAnimating = false;
+    let turnedState: 'none' | 'left' | 'right' = 'none';
+    let isContentVisible = true;
+    let windowWidth: number;
+    let windowHeight: number;
+    let resolveAnimationPromise: (() => void) | null = null;
+    let currentPathname: string;
+    let basePath: string;
 
-	// State for the rotation toggle
-	let turnedState: 'none' | 'left' | 'right' = 'none';
+    // Subscribe to page store for current path and base
+    const unsubscribePage = page.subscribe((p) => {
+        currentPathname = p.url.pathname;
+        basePath = p.data.base || '';
+    });
+    onDestroy(unsubscribePage);
 
-	// State for the extra "75° more" button
-	let show75ButtonFor: 'none' | 'left' | 'right' = 'none';
+    // Compute orientation and main content class based on sidebar state
+    $: isVertical = windowHeight > windowWidth;
+    $: mainClass = (() => {
+        const baseClass = 'absolute top-16 bottom-4 z-10 transition-all duration-500 delay 200';
+        if (turnedState === 'left') {
+            return `${baseClass} left-4 ${isVertical ? 'right-4 ml-[50%]' : 'right-4 ml-[16.66%]'}`;
+        }
+        if (turnedState === 'right') {
+            return `${baseClass} right-4 ${isVertical ? 'left-4 mr-[50%]' : 'left-4 mr-[16.66%]'}`;
+        }
+        return `${baseClass} left-4 right-4`;
+    })();
 
-	// Handle top-left button toggle (rotate left)
-	function handleTopLeftToggle() {
-		show75ButtonFor = 'none';
-		const wasTurnedLeft = turnedState === 'left';
-		sceneComponent.rotateByAngle(
-			wasTurnedLeft ? -getRotationAmount('15') : getRotationAmount('15')
-		);
-		turnedState = wasTurnedLeft ? 'none' : 'left';
-	}
+    // Reset to home and animate scene
+    async function handleReset() {
+        if (currentPathname === basePath + '/') return;
+        isContentVisible = false;
+        sceneComponent.rotateToAngle(0);
+        turnedState = 'none';
+        await new Promise<void>((resolve) => {
+            resolveAnimationPromise = resolve;
+        });
+        await goto(`${base}/`);
+        isContentVisible = true;
+    }
 
-	// Handle top-right button toggle (rotate right)
-	function handleTopRightToggle() {
-		show75ButtonFor = 'none';
-		const wasTurnedRight = turnedState === 'right';
-		sceneComponent.rotateByAngle(
-			wasTurnedRight ? getRotationAmount('15') : -getRotationAmount('15')
-		);
-		turnedState = wasTurnedRight ? 'none' : 'right';
-	}
+    // Handle navigation from sidebar with animation
+    async function handleSidebarNavigation(event: CustomEvent<{ path: string }>) {
+        const { path } = event.detail;
+        isContentVisible = false;
+        if (turnedState === 'left') {
+            sceneComponent.rotateByAngle(getRotationAmount('75'));
+            turnedState = 'none';
+        }
+        await new Promise<void>((resolve) => {
+            resolveAnimationPromise = resolve;
+        });
+        await goto(`${base}/${path}`);
+        isContentVisible = true;
+    }
 
-	// 75° More buttons
-	function handleMiddleLeftClick() {
-		sceneComponent.rotateByAngle(getRotationAmount('75'));
-		show75ButtonFor = 'none';
-		turnedState = 'none';
-	}
+    // Toggle left sidebar and animate scene
+    function handleTopLeftToggle() {
+        const wasTurnedLeft = turnedState === 'left';
+        sceneComponent.rotateByAngle(
+            wasTurnedLeft ? -getRotationAmount('15') : getRotationAmount('15')
+        );
+        turnedState = wasTurnedLeft ? 'none' : 'left';
+    }
 
-	function handleMiddleRightClick() {
-		sceneComponent.rotateByAngle(-getRotationAmount('75'));
-		show75ButtonFor = 'none';
-		turnedState = 'none';
-	}
+    // Toggle right sidebar and animate scene
+    function handleTopRightToggle() {
+        const wasTurnedRight = turnedState === 'right';
+        sceneComponent.rotateByAngle(
+            wasTurnedRight ? getRotationAmount('15') : -getRotationAmount('15')
+        );
+        turnedState = wasTurnedRight ? 'none' : 'right';
+    }
 
-	// Center button resets everything
-	function handleCenterClick() {
-		sceneComponent.rotateToAngle(0);
-		turnedState = 'none';
-		show75ButtonFor = 'none';
-	}
+    // Animate scene for right sidebar "turn more" action
+    function handleMiddleRightClick() {
+        sceneComponent.rotateByAngle(-getRotationAmount('75'));
+        turnedState = 'none';
+    }
 
-	// Dynamically returns rotation amount (in radians)
-	function getRotationAmount(base: '15' | '75'): number {
-		// This check needs to be client-side only
-		if (typeof window === 'undefined') return 0;
-
-		const isVertical = window.innerHeight > window.innerWidth;
-		if (isVertical) {
-			return Math.PI / 4; // 45°
-		}
-		return base === '15' ? Math.PI / 12 : (5 * Math.PI) / 12; // 15° or 75°
-	}
+    // Get rotation amount for scene animation
+    function getRotationAmount(base: '15' | '75'): number {
+        if (typeof window === 'undefined') return 0;
+        if (isVertical) return Math.PI / 4;
+        return base === '15' ? Math.PI / 12 : (5 * Math.PI) / 12;
+    }
 </script>
 
-<!-- The 3D Scene is the background for the entire app -->
+<!-- Track window size for responsive layout -->
+<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
+
+<!-- 3D scene component with animation event handlers -->
 <Scene
-	bind:this={sceneComponent}
-	on:animationstart={() => (isAnimating = true)}
-	on:animationend={() => {
-		isAnimating = false;
-		show75ButtonFor = turnedState;
-	}}
+    bind:this={sceneComponent}
+    on:animationstart={() => (isAnimating = true)}
+    on:animationend={() => {
+        isAnimating = false;
+        if (resolveAnimationPromise) {
+            resolveAnimationPromise();
+            resolveAnimationPromise = null;
+        }
+    }}
 />
 
-<!-- 
-  This div acts as the UI layer. 
-  'pointer-events-none' lets clicks pass through empty areas.
-  Components inside will have 'pointer-events-auto' to be clickable.
--->
-<div class="pointer-events-none absolute inset-0 text-slate-800">
-	<Navbar
-		{isAnimating}
-		{turnedState}
-		on:toggleLeft={handleTopLeftToggle}
-		on:toggleRight={handleTopRightToggle}
-		on:reset={handleCenterClick}
-	/>
+<!-- Overlay UI: Navbar, Sidebars, and Main Content -->
+<div class="pointer-events-none absolute inset-0">
+    <Navbar
+        {isAnimating}
+        {turnedState}
+        on:toggleLeft={handleTopLeftToggle}
+        on:toggleRight={handleTopRightToggle}
+        on:reset={handleReset}
+    />
 
-	<LeftSidebar
-		show={show75ButtonFor === 'left'}
-		{isAnimating}
-		on:turnMore={handleMiddleLeftClick}
-	/>
+    <LeftSidebar show={turnedState === 'left'} on:navigate={handleSidebarNavigation} />
 
-	<RightSidebar
-		show={show75ButtonFor === 'right'}
-		{isAnimating}
-		on:turnMore={handleMiddleRightClick}
-	/>
+    <RightSidebar show={turnedState === 'right'} on:turnMore={handleMiddleRightClick} />
 
-	<!-- The main content of the current page will be rendered here -->
-	<main class="relative z-10 p-4">
-		<slot />
-	</main>
+    <main class={mainClass}>
+        {#if isContentVisible}
+            <slot />
+        {/if}
+    </main>
 </div>

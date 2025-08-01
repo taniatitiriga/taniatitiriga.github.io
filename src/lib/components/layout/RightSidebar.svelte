@@ -15,7 +15,8 @@
 
 {#if show}
 	<div
-		transition:fly={{ x: 100, duration: 400, delay: 200 }}
+		in:fly={{ x: 100, duration: 600, delay: 300 }}
+		out:fly={{ x: 100, duration: 400 }}
 		class="pointer-events-auto absolute right-0 top-16 bottom-0 flex flex-col justify-center p-10 text-slate-100 {sidebarWidthClass}"
 	>
 		<div class="flex flex-col items-end">
