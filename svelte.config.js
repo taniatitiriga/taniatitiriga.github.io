@@ -27,10 +27,7 @@ const config = {
 			assets: 'build',
 			fallback: '404.html',
 			precompress: false
-		}),
-		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/website' : ''
-		}
+		})
 	}
 };
 
