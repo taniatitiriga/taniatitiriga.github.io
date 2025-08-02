@@ -2,12 +2,9 @@
 	import { fly } from 'svelte/transition';
 
 	export let show: boolean;
-
 	let windowWidth: number;
 	let windowHeight: number;
-
 	$: isVertical = windowHeight > windowWidth;
-
 	$: sidebarWidthClass = isVertical ? 'w-1/2' : 'w-1/6';
 </script>
 

@@ -1,4 +1,5 @@
-<!-- src/lib/components/Scene.svelte -->
+<!-- CAREFUL -->
+ 
 <script lang="ts">
 	import { onMount, onDestroy, createEventDispatcher } from 'svelte';
 	import * as THREE from 'three';

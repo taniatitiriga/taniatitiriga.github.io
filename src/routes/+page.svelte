@@ -1,5 +1,5 @@
-<!-- src/routes/+page.svelte -->
- 
+<!-- landing page -->
+
 <script lang="ts">
 	import { page } from '$app/stores';
 

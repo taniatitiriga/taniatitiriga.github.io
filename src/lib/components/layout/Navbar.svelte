@@ -7,7 +7,7 @@
     const dispatch = createEventDispatcher();
 </script>
 
-<!-- Top Left: Toggle left sidebar -->
+<!-- left sidebar toggle -->
 <button
     on:click={() => dispatch('toggleLeft')}
     disabled={isAnimating || turnedState === 'right'}
@@ -20,7 +20,7 @@
     {/if}
 </button>
 
-<!-- Top Right: Toggle right sidebar -->
+<!-- right sidebar toggle -->
 <button
     on:click={() => dispatch('toggleRight')}
     disabled={isAnimating || turnedState === 'left'}
@@ -33,7 +33,7 @@
     {/if}
 </button>
 
-<!-- Center: Reset to home -->
+<!-- home title button -->
 <button
     on:click={() => dispatch('reset')}
     disabled={isAnimating}

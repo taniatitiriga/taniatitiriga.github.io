@@ -1,5 +1,4 @@
 <script lang="ts">
-    // Import global styles and components
     import '../app.css';
     import Scene from '$lib/components/Scene.svelte';
     import Navbar from '$lib/components/layout/Navbar.svelte';
@@ -10,7 +9,6 @@
     import { page } from '$app/stores';
     import { onDestroy } from 'svelte';
 
-    // State variables
     let sceneComponent: Scene;
     let isAnimating = false;
     let turnedState: 'none' | 'left' | 'right' = 'none';
@@ -21,14 +19,14 @@
     let currentPathname: string;
     let basePath: string;
 
-    // Subscribe to page store for current path and base
+    // current path and base (not important anymore)
     const unsubscribePage = page.subscribe((p) => {
         currentPathname = p.url.pathname;
         basePath = p.data.base || '';
     });
     onDestroy(unsubscribePage);
 
-    // Compute orientation and main content class based on sidebar state
+    // orientation based on sidebars
     $: isVertical = windowHeight > windowWidth;
     $: mainClass = (() => {
         const baseClass ='pointer-events-auto absolute top-[15%] bottom-4 z-30 transition-all duration-500';
@@ -41,7 +39,7 @@
         return `${baseClass} left-4 right-4`;
     })();
 
-    // Reset to home and animate scene
+    // reset and animation for home button
     async function handleReset() {
         if (currentPathname === basePath + '/') return;
         isContentVisible = false;
@@ -54,7 +52,7 @@
         isContentVisible = true;
     }
 
-    // Handle navigation from sidebar with animation
+    // animation for accessing page from sidebar (cube turning)
     async function handleSidebarNavigation(event: CustomEvent<{ path: string }>) {
         const { path } = event.detail;
         isContentVisible = false;
@@ -69,7 +67,7 @@
         isContentVisible = true;
     }
 
-    // Toggle left sidebar and animate scene
+    // opening left sidebar animation
     function handleTopLeftToggle() {
         const wasTurnedLeft = turnedState === 'left';
         sceneComponent.rotateByAngle(
@@ -78,7 +76,7 @@
         turnedState = wasTurnedLeft ? 'none' : 'left';
     }
 
-    // Toggle right sidebar and animate scene
+    // same for right sidebar
     function handleTopRightToggle() {
         const wasTurnedRight = turnedState === 'right';
         sceneComponent.rotateByAngle(
@@ -87,13 +85,13 @@
         turnedState = wasTurnedRight ? 'none' : 'right';
     }
 
-    // Animate scene for right sidebar "turn more" action
+    // turning more for right sidebar (maybe use it later?)
     function handleMiddleRightClick() {
         sceneComponent.rotateByAngle(-getRotationAmount('75'));
         turnedState = 'none';
     }
 
-    // Get rotation amount for scene animation
+    // compute rotation angle phone/web
     function getRotationAmount(base: '15' | '75'): number {
         if (typeof window === 'undefined') return 0;
         if (isVertical) return Math.PI / 4;
@@ -101,10 +99,10 @@
     }
 </script>
 
-<!-- Track window size for responsive layout -->
+<!-- track window size -->
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 
-<!-- 3D scene component with animation event handlers -->
+<!-- cube bg animations -->
 <Scene
     bind:this={sceneComponent}
     on:animationstart={() => (isAnimating = true)}
@@ -117,7 +115,7 @@
     }}
 />
 
-<!-- Overlay UI: Navbar, Sidebars, and Main Content -->
+<!-- overlay UI: nav, sidebars and content -->
 <div class="pointer-events-none absolute inset-0">
     <Navbar
         {isAnimating}

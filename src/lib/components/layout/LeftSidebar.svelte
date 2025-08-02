@@ -8,11 +8,11 @@
     let windowWidth: number;
     let windowHeight: number;
 
-    // Responsive sidebar width based on orientation
+    // sidebar width for phone/web
     $: isVertical = windowHeight > windowWidth;
     $: sidebarWidthClass = isVertical ? 'w-1/2' : 'w-1/6';
 
-    // Navigation structure with expandable sections
+    // expandable sections
     let nav = [
         {
             name: 'Writeups',
@@ -40,13 +40,13 @@
         }
     ];
 
-    // Toggle expand/collapse for a navigation item (support any expandable item)
+    // toggle expand/collapse
     function toggleExpand(item: { expanded: boolean }) {
         item.expanded = !item.expanded;
-        nav = nav; // Trigger Svelte reactivity
+        nav = nav; // for svelte reactivity
     }
 
-    // Dispatch navigation event
+    // nav event
     function handleNavigate(path: string) {
         dispatch('navigate', { path });
     }
@@ -64,7 +64,8 @@
             {#each nav as section}
                 <li class="flex flex-col items-start">
                     <div class="flex items-center gap-1">
-                        <!-- Expand/collapse button for sections with children -->
+
+                        <!-- expand/collapse for sections with children -->
                         <div class="flex items-center justify-center w-6 h-6">
                             {#if section.children && section.children.length > 0}
                                 <button
@@ -77,7 +78,8 @@
                                 </button>
                             {/if}
                         </div>
-                        <!-- Section navigation button -->
+
+                        <!-- section navigation  -->
                         <button
                             class="text-3xl font-bold text-left hover:text-white"
                             on:click={() => handleNavigate(section.path)}
@@ -92,7 +94,8 @@
                             {#each section.children as child}
                                 <li class="flex flex-col items-start">
                                     <div class="flex items-center gap-1">
-                                        <!-- Expand/collapse button for child items with children -->
+
+                                        <!-- expand/collapse for child with children -->
                                         <div class="flex items-center justify-center w-6 h-6">
                                             {#if child.children && child.children.length > 0}
                                                 <button
@@ -105,7 +108,8 @@
                                                 </button>
                                             {/if}
                                         </div>
-                                        <!-- Child navigation button -->
+
+                                        <!-- child navigation button -->
                                         <button
                                             class="text-2xl text-left hover:text-white"
                                             on:click={() => handleNavigate(child.path)}
@@ -118,7 +122,8 @@
                                         <ul class="w-full pl-3 pt-2 space-y-1 border-l border-slate-700 ml-3">
                                             {#each child.children as sub}
                                                 <li>
-                                                    <!-- Sub-item navigation button -->
+
+                                                    <!-- sub-item (leaves) navigation button -->
                                                     <button
                                                         class="w-full pl-6 text-left text-xl text-slate-300 hover:text-white"
                                                         on:click={() => handleNavigate(sub.path)}
