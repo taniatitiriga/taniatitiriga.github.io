@@ -1,5 +1,5 @@
 <!-- stupid wrapper -->
 
-<div class="text-white m-8">
+<div class="text-white m-34">
 	<slot />
 </div>

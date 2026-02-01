@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
+	import { base } from '$app/paths';
 
 	export let show: boolean;
 	let windowWidth: number;
@@ -20,7 +21,7 @@
 			<h2 class="text-3xl text-white mb-5" style="font-family: 'Amatic SC', cursive;">Let's get in touch!<br/></h2>
 
 			<a
-				href="/CV_TaniaTitiriga.pdf"
+				href={`${base}/CV_TaniaTitiriga.pdf`}
 				download
 				target="_blank"
 				rel="noopener noreferrer"

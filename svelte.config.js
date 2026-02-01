@@ -24,12 +24,16 @@ const config = {
 						lang,
 						theme: 'dracula'
 					});
-					return `{@html \`${html}\` }`;
+					// Use String.raw to safely handle backticks in HTML output
+					return `{@html String.raw\`${html}\`}`;
 				}
 			}
 		})
 	],
 	kit: {
+		paths: {
+			base: '/website'
+		},
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',

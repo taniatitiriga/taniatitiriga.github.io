@@ -99,6 +99,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>Taniusca - Blog</title>
+</svelte:head>
+
 <!-- track window size -->
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 

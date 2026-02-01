@@ -1,6 +1,7 @@
 <script>
-	import PageContainer from '$lib/components/layout/PageContainer.svelte';
-	export let data;
+    import PageContainer from '$lib/components/layout/PageContainer.svelte';
+    import { base } from '$app/paths';
+    export let data;
 </script>
 
 <PageContainer>
@@ -9,7 +10,7 @@
 	<ul>
         {#each data?.projects ?? [] as project}
             <li class="mb-2">
-                <a href={`/projects/${project.slug}`} class="text-3xl hover:underline">
+                <a href={`${base}/projects/${project.slug}`} class="text-3xl hover:underline">
                     {project.title}
                 </a>
                 <p class="text-gray-400 text-2xl">{project.excerpt}</p>

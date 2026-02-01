@@ -27,6 +27,17 @@
                         { name: 'Blue', path: 'writeups/TryHackMe/Blue' },
                         { name: 'Metasploit: Meterpreter', path: 'writeups/TryHackMe/Metasploit-Meterpreter' }
                     ]
+                },
+                {
+                    name: 'Hackday 2026',
+                    path: 'writeups/Hackday_2026',
+                    expanded: false,
+                    children: [
+                        { name: 'Administration Console', path: 'writeups/Hackday_2026/AdministrationConsole' },
+                        { name: 'Millennium Kombat', path: 'writeups/Hackday_2026/MilleniumKombat' },
+                        { name: 'NFTrap', path: 'writeups/Hackday_2026/NFTrap' },
+                        { name: 'Secret Ledger', path: 'writeups/Hackday_2026/SecretLedger' }
+                    ]
                 }
             ]
         },
