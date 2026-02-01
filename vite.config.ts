@@ -6,7 +6,7 @@ export default defineConfig({
 	base: '/website/',
 	plugins: [tailwindcss(), sveltekit()],
 	define: {
-        'import.meta.env.BASE_URL': JSON.stringify('/website/')
+        'import.meta.env.BASE_URL': JSON.stringify('/website')
     },
 	test: {
 		projects: [
